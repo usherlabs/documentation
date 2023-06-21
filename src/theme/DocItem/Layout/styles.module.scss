@@ -33,13 +33,14 @@
 			.menu-content {
 				top: var(--ifm-navbar-height) !important;
 			}
-		  label[role="menuitem"]{
+			label[role='menuitem'] {
 				background-color: transparent;
 				&.active {
 					font-weight: bolder;
 				}
 			}
-			a[href="https://redocly.com/redoc/"] {
+			a[href="https://redocly.com/redoc/"]
+			{
 				display: none;
 			}
 

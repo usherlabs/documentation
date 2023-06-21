@@ -1,5 +1,5 @@
 ---
-title: "Authentication"
+title: 'Authentication'
 sidebar_position: 2
 ---
 
@@ -9,9 +9,9 @@ sidebar_position: 2
 
 ```ts
 const logStoreClient = new LogStoreClient({
-  auth: {
-    privateKey: 'your-private-key',
-  },
+	auth: {
+		privateKey: 'your-private-key',
+	},
 });
 ```
 
@@ -21,9 +21,9 @@ Private keys can also be generated using `LogStoreClient.generateEthereumAccount
 
 ```ts
 const logStoreClient = new LogStoreClient({
-  auth: {
-    ethereum: window.ethereum,
-  },
+	auth: {
+		ethereum: window.ethereum,
+	},
 });
 ```
 

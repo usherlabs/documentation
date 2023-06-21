@@ -1,15 +1,15 @@
-html[data-theme="light"] {
-	--navbar-link-c: theme("colors.black-2");
+html[data-theme='light'] {
+	--navbar-link-c: theme('colors.black-2');
 
-	--navbar-separator-bg-c: theme("colors.black-5");
+	--navbar-separator-bg-c: theme('colors.black-5');
 
 	--ifm-dropdown-background-color: var(--token-secondary-bg-c);
 }
 
-html[data-theme="dark"] {
-	--navbar-link-c: theme("colors.white");
+html[data-theme='dark'] {
+	--navbar-link-c: theme('colors.white');
 
-	--navbar-separator-bg-c: theme("colors.white-5");
+	--navbar-separator-bg-c: theme('colors.white-5');
 
 	.navbar {
 		.dropdown {
@@ -94,7 +94,7 @@ html[data-theme="dark"] {
 			flex-grow: 1;
 
 			.icon-link,
-			[class*="toggle_"] {
+			[class*='toggle_'] {
 				padding: 0.5rem;
 				display: flex;
 
@@ -117,7 +117,7 @@ html[data-theme="dark"] {
 				position: relative;
 
 				&::after {
-					content: "";
+					content: '';
 					position: absolute;
 					height: 2px;
 					left: var(--ifm-navbar-item-padding-horizontal);
@@ -217,7 +217,7 @@ html[data-theme="dark"] {
 			}
 
 			&::before {
-				content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgM2gxMi4xMk03LjA2IDF2Mk0xMC40MiAxN2w0LjA0LTkuMzNMMTguNSAxN00xMS42NiAxNC4zM2g1LjZNMTAuODEgM1M5LjggNi45MiA3LjM1IDkuODhjLTIuNDQgMi45NS01IDQuNDUtNSA0LjQ1IiBzdHJva2U9IiM5MkEwQjMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTkuNzUgMTIuMzNzLTEuNDctMS4xMi0zLjAzLTMuMTJjLTEuNTYtMi0yLjM1LTMuNTQtMi4zNS0zLjU0IiBzdHJva2U9IiM5MkEwQjMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+");
+				content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgM2gxMi4xMk03LjA2IDF2Mk0xMC40MiAxN2w0LjA0LTkuMzNMMTguNSAxN00xMS42NiAxNC4zM2g1LjZNMTAuODEgM1M5LjggNi45MiA3LjM1IDkuODhjLTIuNDQgMi45NS01IDQuNDUtNSA0LjQ1IiBzdHJva2U9IiM5MkEwQjMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTkuNzUgMTIuMzNzLTEuNDctMS4xMi0zLjAzLTMuMTJjLTEuNTYtMi0yLjM1LTMuNTQtMi4zNS0zLjU0IiBzdHJva2U9IiM5MkEwQjMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+');
 			}
 		}
 	}

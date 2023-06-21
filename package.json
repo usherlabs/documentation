@@ -1,6 +1,6 @@
 {
-	"name": "@logsn/docs",
-	"version": "0.0.1",
+	"name": "usherlabs-docs",
+	"version": "0.0.2",
 	"private": false,
 	"scripts": {
 		"install": "pnpm i .",
@@ -12,7 +12,9 @@
 		"serve": "docusaurus serve",
 		"write-translations": "docusaurus write-translations",
 		"write-heading-ids": "docusaurus write-heading-ids",
-		"typecheck": "tsc"
+		"lint": "eslint -c ./.eslintrc ./src/**/*.tsx",
+		"typecheck": "tsc",
+		"format": "prettier --write \"{src,docs}/**/*.{js,jsx,mjs,ts,tsx,json,css,scss,md,sol}\""
 	},
 	"dependencies": {
 		"@docusaurus/core": "2.4.0",
@@ -45,21 +47,20 @@
 		"tailwindcss": "0.0.0-insiders.4893cad"
 	},
 	"devDependencies": {
+		"@trivago/prettier-plugin-sort-imports": "^4.1.1",
+		"@typescript-eslint/eslint-plugin": "^5.57.0",
+		"@typescript-eslint/parser": "^5.57.0",
 		"@docusaurus/module-type-aliases": "2.4.0",
 		"@docusaurus/types": "2.4.0",
 		"@tsconfig/docusaurus": "^1.0.5",
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-airbnb-typescript": "^17.0.0",
-		"eslint-config-next": "^12.1.5",
-		"eslint-config-prettier": "^8.5.0",
+		"eslint": "^8.36.0",
+		"eslint-config-prettier": "^8.6.0",
 		"eslint-import-resolver-alias": "^1.1.2",
-		"eslint-import-resolver-typescript": "^2.7.1",
-		"eslint-plugin-import": "^2.26.0",
-		"eslint-plugin-jest": "^26.1.1",
-		"eslint-plugin-jsx-a11y": "^6.5.1",
-		"eslint-plugin-prettier": "^4.0.0",
-		"eslint-plugin-react": "^7.29.4",
-		"eslint-plugin-react-hooks": "^4.4.0",
+		"eslint-import-resolver-typescript": "^3.5.3",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-jest": "^27.2.1",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-simple-import-sort": "^10.0.0",
 		"eslint-plugin-unused-imports": "^2.0.0",
 		"prettier": "^2.5.1",
 		"typescript": "^5.0.4"

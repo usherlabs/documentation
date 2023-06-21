@@ -44,6 +44,7 @@ export default function DocPageLayoutSidebar({
 				hiddenSidebarContainer && styles.docSidebarContainerHidden
 			)}
 			onTransitionEnd={(e) => {
+				// eslint-disable-next-line
 				if (!e.currentTarget.classList.contains(styles.docSidebarContainer!)) {
 					return;
 				}

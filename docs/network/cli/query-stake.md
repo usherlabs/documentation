@@ -1,9 +1,7 @@
 ---
-title: "Query Stake"
-sidebar_position: 3
+title: 'Query Stake'
+sidebar_position: 4
 ---
-
-# Query Stake
 
 Before the log store can be queried, some amount needs to be staked by the consumer:
 

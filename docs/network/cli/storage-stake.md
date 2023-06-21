@@ -1,9 +1,9 @@
 ---
-title: "Storage Stake"
-sidebar_position: 2
+title: 'Storage Stake'
+sidebar_position: 3
 ---
 
-# Storage Stake
+## Storage Stake
 
 To enable data from a stream to be stored, some stake is required for storing that stream:
 

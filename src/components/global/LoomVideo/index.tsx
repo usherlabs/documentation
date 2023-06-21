@@ -19,7 +19,7 @@ const LoomVideo = (props: Props) => {
 	};
 
 	const options = Object.entries(optionsMapping)
-		.filter(([key, value]) => value)
+		.filter(([_, value]) => value)
 		.map(([key, value]) => `${key}=${value}`)
 		.join('&');
 	const url = `${src}?${options}`;
