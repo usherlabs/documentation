@@ -4,30 +4,30 @@ title: 'Overview'
 slug: '/'
 ---
 
-# Overview
+The Log Store Network decentralizes custom data management.
+Disparate and independent systems can depend on Log Store to manage custom data in an entirely trustless and "zero-party" manner.
+From the point data is published to the network, it becomes immutable, permanently stored, and verifiably tamper-proof.
+This secures Smart Contracts, on-chain systems, and other applications from compromise by any centralised intermediary.
 
-The Log Store Network is a decentralized and permissionless time-series database.
+The implementation of this solution is a decentralized and permissionless time-series database.
 
 Publish atomic event data from any software environment and query data with timestamps.
 
-From the point data is captured and published to the network, it becomes immutable, permanently stored, and verifiably tamper-proof.
-
-Web3 applications that leverage custom data managed by the Log Store Network can become trustlessly secure from compromised through data verification.
-
 ## The Purpose
 
-The Log Store Network secures the use of custom data within Smart Contracts and other decentralized systems.
-
-Typically, custom data is requested from centralised and siloed environments which exposes security risks associated to data integrity and data availability. Even when decentralised storage networks are utilised, centralised APIs that behave gateways to this data can remain points of compromise.
+Typically, custom data is requested from centralised and siloed environments which exposes security risks associated to data integrity and data availability. Even when decentralised storage networks are utilised, centralised APIs that gateway data can remain points of compromise.
 The team behind the Log Store experienced this issue first-hand whereby using custom data to manage the allocation of digital assets required trust in the entity managing the data.
 
 The Log Store Network solves this problem by decentralising data management from the point of data capture, to storage and then to query.
+Log Store's time-series composability ensures systems can track which data they've ingested over time.
 
 By leveraging the simplicity of data transport over the [Streamr Network](https://streamr.network/), consensus-driven data validity facilitated by the [KYVE Network](https://www.kyve.network/) and guaranteed permanence and immutability of data with the [Arweave Blockchain](https://www.arweave.org/), the Log Store Network achieves it’s purpose.
 
 ## Data Validity & Verification
 
-Verifying the validity data is the process of checking that some data meets a pre-programmed protocol.
+Verifying the validity data is the process of checking if data has successfully passed through a pre-programmed protocol.
+
+The Log Store Network is a platform for data protocols, whereby systems can program checks on data including whether it is managed by Log Store and therefore tamper-proof and immutable.
 
 An example of this can be demonstrated through a Web3-integrated CPC Advertising Campaign:
 
