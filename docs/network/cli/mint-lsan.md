@@ -1,5 +1,5 @@
 ---
-title: 'Minting LSAN Tokens with CLI'
+title: 'Minting LSAN Tokens'
 sidebar_position: 2
 ---
 
