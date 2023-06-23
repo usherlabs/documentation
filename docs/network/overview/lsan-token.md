@@ -10,7 +10,7 @@ The LSAN token, an ERC20 token exclusively developed for use with the Log Store 
 ## Acquiring LSAN Tokens
 
 Participants can acquire **LSAN** tokens by depositing **MATIC** into the Log Store AlphaNet ERC20 Smart Contract. The number of LSAN tokens minted is calculated automatically based on the network's storage costs - whereby `1 LSAN = 1 wei_per_byte * multplier`. The `multiplier` gives the development team the ability to incorporate a fee buffer that may be required to compensate additional network services beyond storage, such as use of oracles.
-This dynamic pricing model ensures that the participants compensate the network accurately for storage of data to the underlying decentralised storage network.
+This dynamic pricing model ensures that the participants compensate the network accurately for storage of data to the underlying decentralized storage network.
 
 [Learn how to mint LSAN with our CLI →](../cli/getting-started.md)
 
