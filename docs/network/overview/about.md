@@ -1,10 +1,13 @@
 ---
 sidebar_position: 1
-title: 'Overview'
+title: 'The Log Store Network'
 slug: '/'
 ---
 
+# About the Log Store
+
 The Log Store Network decentralizes custom data management.
+
 Disparate and independent systems can depend on Log Store to manage custom data in an entirely trustless and "zero-party" manner.
 From the point data is published to the network, it becomes immutable, permanently stored, and verifiably tamper-proof.
 This secures Smart Contracts, on-chain systems, and other applications from compromise by any centralised intermediary.

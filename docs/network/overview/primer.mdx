@@ -15,6 +15,15 @@ Traditional systems can now cooperate on data without intermediaries.
 
 The technology leverages the Streamr Network for global transport of data, the Arweave Blockchain for permanent storage of data, the Kyve Network for consensus over data stored, and custom integration software embedded in Nodes and new Smart Contracts to deliver the solution in a decentralized and token-incentivized manner. The Log Store Network comprises two sub-networks bound by their own Blockchain systems, and interlinked via a Streamr stream that behaves as a communication mesh.
 
+import LoomVideo from '@site/src/components/global/LoomVideo';
+
+<LoomVideo
+	src={`https://www.loom.com/embed/d6ac5431b2cd4286ab1b85fa346f7df9?sid=a9b2ee9f-fa46-49df-bfb3-ee83f87225a5`}
+	hideOwner
+/>
+
+---
+
 ### Broker Network: The First Layer
 
 The first layer of our technology is the Broker Network, where each Node is a Streamr Broker Node that has installed the `logStore` Plugin. This layer is effectively a decentralized version of the Streamr Broker Storage Plugin, whereby Nodes receive events over Streams, store those events into a local time-series database, and expose connections over HTTP for query-ability.
@@ -31,7 +40,8 @@ The Validator layer builds upon the Kyve Network, a blockchain designed for yiel
 
 Once data is pushed to Arweave, a recursive process occurs. Nodes within the Broker layer are responsible for reading from this decentralized data lake and pushing reports to our Polygon Smart Contract. This reporting process takes heavy inspiration from Chainlink’s Off-Chain Reporting (OCR) strategy to minimize gas fees.
 
+---
+
 :::note
 The full litepaper explaining the network, its consensus mechanisms, and more will release soon.
-
 :::

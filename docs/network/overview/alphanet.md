@@ -1,13 +1,13 @@
 ---
-sidebar_position: 1
-title: 'Overview'
+sidebar_position: 3
+title: 'AlphaNet'
 ---
 
-# Overview
+# AlphaNet
 
 AlphaNet is an integral part of the release of the Log Store Network. It serves as a initial testbed for Log Store's decentralized data storage and retrieval solution, while also remaining compatible with the Streamr Network’s live pub/sub topics (streams), managed within the Polygon Blockchain's MainNet, and Arweave’s live storage environment.
 
-### Getting Started with AlphaNet
+### Getting Started
 
 To interact with AlphaNet, you will need to follow a simple set of instructions. First, you must acquire **LSAN** tokens — a custom token developed exclusively for the Log Store AlphaNet. These tokens facilitate transactions within the network and can be obtained by depositing **MATIC** into the Log Store AlphaNet ERC20 Smart Contract.
 
