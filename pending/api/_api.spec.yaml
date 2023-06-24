@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: LogStore API
 security:
-  - basicAuth: [ ]
+  - basicAuth: []
 servers:
   - url: https://api.logstore.usher.so
 paths:
@@ -23,7 +23,7 @@ paths:
         The endpoint is secured with Basic Authentication, and improper authentication results in a '401 Unauthorized' response. The responses can be in either **`application/json`** or **`text/plain`** format, depending on the chosen **`format`**.
       operationId: queryData
       security:
-        - basicAuth: [ ]
+        - basicAuth: []
       parameters:
         - in: path
           name: id
@@ -42,13 +42,13 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ last, from, range ]
+            enum: [last, from, range]
           description: The type of query to perform.
         - in: query
           name: format
           schema:
             type: string
-            enum: [ protocol, object, raw ]
+            enum: [protocol, object, raw]
           description: The format of the response. 'Protocol' and 'object' return the data in JSON format, while 'raw' returns it in plain text.
         - in: query
           name: version
@@ -93,24 +93,38 @@ paths:
       responses:
         '200':
           description: A successful operation will return a stream of the requested data. The structure of each item in the stream will depend on the specified format and query parameters.
-          content:
-            application/json:
+          headers:
+            Consensus:
+              description: >
+                A JSON string of an array of objects that include: hash, signer ECDSA address and "signature".
+                This array of objects represents the confirmation from each Broker Node in the Network.
               schema:
-                type: object
-                description: Each item in the stream is a JSON object with this structure.
-                properties:
-                  streamId: "stream123"
-                  streamPartition: 0
-                  timestamp: 1633095662
-                  sequenceNumber: 12345
-                  publisherId: "pub123"
-                  msgChainId: "msg123"
-                  messageType: "TYPE_A"
-                  contentType: "text/plain"
-                  encryptionType: "NONE"
-                  groupKeyId: "group123"
-                  content: "Hello, world!"
-                  signature: "SIG123"
+                type: string
+          # content:
+          #   application/json:
+          #     schema:
+          #       type: object
+          #       description: Each item in the stream is a JSON object.
+          #       properties:
+          #         streamId:
+          #           type: string
+          #         streamPartition:
+          #           type: integer
+          #         timestamp:
+          #           type: integer
+          #         sequenceNumber:
+          #           type: integer
+          #         publisherId:
+          #           type: string
+          #         msgChainId:
+          #           type: string
+          #         messageType:
+          #           type: string
+          #         contentType: 'text/plain'
+          #         encryptionType: 'NONE'
+          #         groupKeyId: 'group123'
+          #         content: 'Hello, world!'
+          #         signature: 'SIG123'
         '400':
           description: An invalid input response is returned when the request parameters are not valid, such as an invalid `id` or `queryType`.
           content:
@@ -119,7 +133,7 @@ paths:
                 invalidInput:
                   value:
                     status: 400
-                    error: "Invalid input. Please check your request parameters."
+                    error: 'Invalid input. Please check your request parameters.'
         '500':
           description: A failure to fetch data is typically due to a server-side issue.
           content:
@@ -128,7 +142,7 @@ paths:
                 failedToFetchData:
                   value:
                     status: 500
-                    error: "Failed to fetch data!"
+                    error: 'Failed to fetch data!'
 components:
   securitySchemes:
     basicAuth:

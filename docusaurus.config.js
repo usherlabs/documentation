@@ -1,4 +1,3 @@
-// @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const path = require('path');
@@ -52,7 +51,8 @@ const config = {
 			},
 		],
 		// This plugin enables tailwind
-		async function myPlugin(context, options) {
+		// async function myPlugin(context, options) {
+		async function myPlugin() {
 			return {
 				name: 'docusaurus-tailwindcss',
 				configurePostCss(postcssOptions) {
@@ -87,23 +87,23 @@ const config = {
 	],
 
 	presets: [
-		[
-			'redocusaurus',
-			{
-				// Plugin Options for loading OpenAPI files
-				specs: [
-					{
-						spec: './docs/network/api/_api.spec.yaml',
-						route: '/network/api/reference',
-					},
-				],
-				// Theme Options for modifying how redoc renders them
-				theme: {
-					// Change with your site colors
-					primaryColor: '#1890ff',
-				},
-			},
-		],
+		// [
+		// 	'redocusaurus',
+		// 	{
+		// 		// Plugin Options for loading OpenAPI files
+		// 		specs: [
+		// 			{
+		// 				spec: './docs/network/api/_api.spec.yaml',
+		// 				route: '/network/api/reference',
+		// 			},
+		// 		],
+		// 		// Theme Options for modifying how redoc renders them
+		// 		theme: {
+		// 			// Change with your site colors
+		// 			primaryColor: '#1890ff',
+		// 		},
+		// 	},
+		// ],
 	],
 
 	themeConfig:
