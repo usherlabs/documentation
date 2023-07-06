@@ -89,6 +89,9 @@ dependencies:
   tailwindcss:
     specifier: 0.0.0-insiders.4893cad
     version: 0.0.0-insiders.4893cad
+  usherlabs-docs:
+    specifier: 'link:'
+    version: 'link:'
 
 devDependencies:
   '@docusaurus/module-type-aliases':

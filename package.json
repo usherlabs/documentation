@@ -44,7 +44,8 @@
 		"redocusaurus": "^1.6.3",
 		"sass": "^1.63.6",
 		"sass-loader": "13.2.2",
-		"tailwindcss": "0.0.0-insiders.4893cad"
+		"tailwindcss": "0.0.0-insiders.4893cad",
+		"usherlabs-docs": "link:"
 	},
 	"devDependencies": {
 		"@docusaurus/module-type-aliases": "2.4.1",
