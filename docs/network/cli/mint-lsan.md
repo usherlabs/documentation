@@ -3,7 +3,7 @@ title: 'Minting LSAN Tokens'
 sidebar_position: 4
 ---
 
-Once you've [checked your Balance]('./balance.md'), you are ready to interact with the LogStore.
+Once you've [checked your Balance](./balance.md), you are ready to interact with the LogStore.
 To do so, you will need LSAN tokens.
 The CLI enables you to mint new LSAN tokens by depositing MATIC.
 
