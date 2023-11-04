@@ -2,7 +2,7 @@
 title: 'Getting Started'
 sidebar_position: 1
 ---
-
+#####
 
 The Logstore network can be thought of as a decentralized, time-indexed database, meaning essentially that it is a database which can be queried by time. There are several key actions that must be taken in order to be able to store data on the network and retrieve data from the network. The actions are:
 - Create a stream.
