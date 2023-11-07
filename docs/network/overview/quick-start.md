@@ -1,10 +1,13 @@
 ---
-title: 'Getting Started'
+title: 'Quick Start'
 sidebar_position: 1
+slug: '/'
 ---
+
 #####
 
 The Log Store Network can be thought of as a decentralized, time-indexed database, meaning essentially that it is a database which can be queried by time. There are several key actions that must be taken in order to be able to store data on the network and retrieve data from the network. The actions are:
+
 - Create a stream.
 - Get some LSAN tokens.
 - Stake some LSAN tokens for storage on stream.
@@ -14,8 +17,8 @@ The Log Store Network can be thought of as a decentralized, time-indexed databas
 
 We will elaborate on all the steps listed above in the coming paragraphs.
 
-
 ## **Installing the CLI Tool and JavaScript Client**
+
 In order to perform the key actions listed above, we will need to interact with the Log Store network and Interacting with the Log Store can be done via three major channels :- The CLI tool, the Javascript Client and the solidity smart contracts
 
 **CLI →** More information on installing the CLI can be found [here](https://docs.logstore.usher.so/network/cli/getting-started), but it can be installed by running `npm i -g @logsn/cli` and is used for interacting with the Log Store network via the command line.
@@ -24,43 +27,42 @@ In order to perform the key actions listed above, we will need to interact with 
 
 **Contracts ->** The contracts are deployed on the polygon network, and the code, address and ABI can be found [here](https://github.com/usherlabs/logstore-mirror/tree/master/packages/contracts), and it can be instantiated for use using ethers.js or [remix](https://remix.ethereum.org/)
 
-
 ## Creating a Stream
 
 Before you can store data on the network or query data from the network, you must first create a stream, and this can be done in three different ways.
 
-1) via the CLI: A stream can be created using the Log Store CLI tool via the following command:
+1. via the CLI: A stream can be created using the Log Store CLI tool via the following command:
 
 ```shell
 logstore create-stream ${streamId} --host [https://polygon-rpc.com](https://polygon-rpc.com/) --wallet ${privateKey}
 ```
 
-2) via the Client
+2. via the Client
 
 ```jsx
-import { LogStoreClient, CONFIG_TEST } from "@logsn/client";
-import axios from "axios";
+import { LogStoreClient, CONFIG_TEST } from '@logsn/client';
+import axios from 'axios';
 
-const privateKey = "privateKey";
-const streamId = "0xpublic_key/path/identifier";
+const privateKey = 'privateKey';
+const streamId = '0xpublic_key/path/identifier';
 
 async function createStream() {
-  // Initialize the LogStore client
-  const logStoreClient = new LogStoreClient({
-    auth: {
-      privateKey,
-    },
-  });
+	// Initialize the LogStore client
+	const logStoreClient = new LogStoreClient({
+		auth: {
+			privateKey,
+		},
+	});
 
-  const stream = await logStoreClient.getOrCreateStream({
-    id: streamId,
-  });
-  console.log({ stream });
+	const stream = await logStoreClient.getOrCreateStream({
+		id: streamId,
+	});
+	console.log({ stream });
 }
 await createStream();
 ```
 
-3) via the Streamr UI: The URL to the UI can be found [here](https://streamr.network/hub/streams/new). Fill in the name of the stream and submit the details.
+3. via the Streamr UI: The URL to the UI can be found [here](https://streamr.network/hub/streams/new). Fill in the name of the stream and submit the details.
 
 ### **Demo**
 
@@ -70,7 +72,6 @@ await createStream();
 
 The **LSAN** token is the native token of the network, and this token is staked to facilitate data storage to a stream and to facilitate queries from the network. The easiest way to obtain this token is to reach out to the admins and developers for some test tokens on [discord](https://go.usher.so/discord). Alternatively, some LSAN can be minted by calling the mint function on the token contract and providing an equivalent amount of Matic, which can be converted to LSAN tokens as demonstrated **[here](https://docs.logstore.usher.so/network/cli/mint-lsan)**. These tokens can then be used to perform any staking needed on the network.
 
-
 ## Publishing to a Stream
 
 Before you can publish to an already created stream, you need to stake some LSAN tokens, and this can be done both via the CLI tool and the Client.
@@ -79,7 +80,7 @@ Before you can publish to an already created stream, you need to stake some LSAN
 
 Using the following methods, one can stake some LSAN tokens.
 
-**CLI:** 
+**CLI:**
 Using the CLI tool installed earlier, we can specify a streamId, a stakeAmount and a private key in order to stake a certain amount of LSAN tokens to the network.
 
 ```shell
@@ -145,7 +146,7 @@ async function publishMessage() {
   });
   const stream = await logStoreClient.getStream(streamId);
   console.log { stream };
- 
+
   await logStoreClient.publish(stream.id, {
 	foo: 'bar 1',
   });
@@ -155,7 +156,6 @@ async function publishMessage() {
 await publishMessage();
 ```
 
-
 ## Querying from a Stream
 
 Before you can query from a stream, you need to stake some LSAN tokens to the network, a query stake different from the stake earlier for storage of the data of a particular stream to the network.
@@ -164,13 +164,14 @@ Before you can query from a stream, you need to stake some LSAN tokens to the ne
 
 Using the following methods, one can stake some LSAN tokens to the network for the purpose of performing a query.
 
-**CLI:** 
+**CLI:**
 By specifying a wallet address and an amount to stake we can successfully stake for the purpose of querying from the network. You might notice we do not specify a stream, that is because you can query from any stream after this stake.
+
 ```shell
 logstore query stake --host https://polygon-rpc.com/ --wallet ${walletAddress} ${amount}
 ```
 
-**Client:** 
+**Client:**
 
 ```javascript
 import { LogStoreClient, CONFIG_TEST } from "@logsn/client";
