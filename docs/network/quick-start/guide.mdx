@@ -29,6 +29,15 @@ In order to perform the key actions listed above, we will need to interact with 
 
 **Contracts ->** The contracts are deployed on the polygon network, and the code, address and ABI can be found [here](https://github.com/usherlabs/logstore-mirror/tree/master/packages/contracts), and it can be instantiated for use using ethers.js or [remix](https://remix.ethereum.org/)
 
+### Configure the CLI
+
+Configure your RPC Endpoint using
+
+1. `logstore init`
+2. Edit your configuration file at `~/.logstore-cli/default.json`
+
+Otherwise you will need to pass the `--host` and `--wallet` flags.
+
 ## Creating a Stream
 
 Before you can store data on the network or query data from the network, you must first create a stream, and this can be done in three different ways.
