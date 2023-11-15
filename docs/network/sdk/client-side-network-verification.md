@@ -5,7 +5,7 @@ sidebar_position: 5
 
 ## Introduction to Network Verification in LogStore
 
-Ensuring data integrity across a decentralized network is crucial for decentralized and immutable data management. The LogStore client achieves this through network verification, which upholds trustless interactions. The verification process confirms data consistency and prevents any unauthorized alterations. This is especially important for applications like smart contracts and dApps that rely on tamper-proof data.
+Ensuring data integrity across a decentralized network is crucial for decentralized and tamper-proof data management. The LogStore client achieves this through network verification, which upholds trustless interactions. The verification process confirms data consistency and prevents any unauthorized alterations. This is especially important for applications like smart contracts and dApps that rely on tamper-proof data.
 
 Moreover, network verification enables self-auditing and discrepancy resolution, which ensures data consistency across nodes. This is critical for the network's reliability, making it more robust and trustworthy.
 
@@ -58,9 +58,21 @@ Consider the structure of a storage matrix:
 
 ```ts
 const storageMatrix: StorageMatrix = new Map([
-  ['eventId1', new Set([{ nodeAddress: '0x123', eventHash: '0xabc' }, { nodeAddress: '0x789', eventHash: '0xabc' }])],
-  ['eventId2', new Set([{ nodeAddress: '0x123', eventHash: '0xdef' }])],
-  ['eventId3', new Set([{ nodeAddress: '0x123', eventHash: '0xghi' }, { nodeAddress: '0x789', eventHash: '0xghi' }])],
+	[
+		'eventId1',
+		new Set([
+			{ nodeAddress: '0x123', eventHash: '0xabc' },
+			{ nodeAddress: '0x789', eventHash: '0xabc' },
+		]),
+	],
+	['eventId2', new Set([{ nodeAddress: '0x123', eventHash: '0xdef' }])],
+	[
+		'eventId3',
+		new Set([
+			{ nodeAddress: '0x123', eventHash: '0xghi' },
+			{ nodeAddress: '0x789', eventHash: '0xghi' },
+		]),
+	],
 ]);
 ```
 

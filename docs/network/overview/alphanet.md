@@ -1,9 +1,13 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 title: 'AlphaNet'
 ---
 
 # AlphaNet
+
+:::tip
+During the current Alpha, you can stake once access the network indefinitely.
+:::
 
 AlphaNet is an integral part of the release of the Log Store Network. It serves as a initial testbed for Log Store's decentralized data storage and retrieval solution, while also remaining compatible with the Streamr Network’s live pub/sub topics (streams), managed within the Polygon Blockchain's MainNet, and Arweave’s live storage environment.
 

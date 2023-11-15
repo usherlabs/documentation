@@ -1,10 +1,10 @@
 ---
-title: 'Quick Start'
+title: 'Guide'
 sidebar_position: 1
 slug: '/'
 ---
 
-#####
+# Quick Start Guide
 
 The Log Store Network can be thought of as a decentralized, time-indexed database, meaning essentially that it is a database which can be queried by time. There are several key actions that must be taken in order to be able to store data on the network and retrieve data from the network. The actions are:
 
@@ -17,7 +17,7 @@ The Log Store Network can be thought of as a decentralized, time-indexed databas
 
 We will elaborate on all the steps listed above in the coming paragraphs.
 
-## **Installing the CLI Tool and JavaScript Client**
+## Installing the CLI Tool and JavaScript Client
 
 In order to perform the key actions listed above, we will need to interact with the Log Store network and Interacting with the Log Store can be done via three major channels :- The CLI tool, the Javascript Client and the solidity smart contracts
 
@@ -204,7 +204,7 @@ By calling the `stake` method of the [Query Manager contract](https://github.com
 function stake(uint amount) public
 ```
 
-### **Querying data from the Stream**
+### Querying data from the Stream
 
 ```javascript
 import { LogStoreClient, CONFIG_TEST } from "@logsn/client";
@@ -235,4 +235,6 @@ const streamId = "0xpublic_key/path/identifier";
 })();
 ```
 
-A more in-depth documentation can be found in the docs [here](https://docs..usher.so/).
+## Quick Start Examples
+
+[https://github.com/usherlabs/logstore-examples](https://github.com/usherlabs/logstore-examples)
