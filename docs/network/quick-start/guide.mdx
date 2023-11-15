@@ -4,6 +4,8 @@ sidebar_position: 1
 slug: '/'
 ---
 
+import LoomVideo from '@site/src/components/global/LoomVideo';
+
 # Quick Start Guide
 
 The Log Store Network can be thought of as a decentralized, time-indexed database, meaning essentially that it is a database which can be queried by time. There are several key actions that must be taken in order to be able to store data on the network and retrieve data from the network. The actions are:
@@ -64,9 +66,13 @@ await createStream();
 
 3. via the Streamr UI: The URL to the UI can be found [here](https://streamr.network/hub/streams/new). Fill in the name of the stream and submit the details.
 
-### **Demo**
+### Creating a Streamr Stream Demo
 
-**[Here](https://www.loom.com/share/628387eb4480479c801da3785d3468ef?sid=7c22f149-d1ff-40e3-a920-2ebcdb371041)** is a demo video showing how all three methods can be used to create a stream.
+<LoomVideo
+	src={`https://www.loom.com/embed/1cb8e1d179304a12b5bb99164ebe2c97`}
+	hideOwner
+	hideTitle
+/>
 
 ## Staking in Log Store
 
