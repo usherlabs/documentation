@@ -7,8 +7,7 @@ sidebar_position: 2
 
 ### Basic Authentication
 
-In the context of the LogStore API, Basic Authentication is used. The user and the signature are extracted from the *
-*`Authorization`** header.
+In the context of the LogStore API, Basic Authentication is used. The user and the signature are extracted from the **`Authorization`** header.
 
 - The username is the consumer's wallet address
 - The password is a signature produced by the wallet address, whereby the signature payload is the wallet address.
