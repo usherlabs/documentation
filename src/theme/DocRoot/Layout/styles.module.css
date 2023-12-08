@@ -13,6 +13,10 @@
 	width: 100%;
 }
 
+.mainWrapper {
+	flex: 1;
+}
+
 .docSidebarContainer {
 	display: none;
 }
@@ -22,26 +26,6 @@
 		flex-grow: 1;
 		max-width: calc(100% - var(--doc-sidebar-width));
 	}
-
-	.docMainContainerEnhanced {
-		max-width: calc(100% - var(--doc-sidebar-hidden-width));
-	}
-
-	.docSidebarContainer {
-		display: block;
-		width: var(--doc-sidebar-width);
-		margin-top: calc(-1 * var(--ifm-navbar-height));
-		border-right: 1px solid var(--ifm-toc-border-color);
-		will-change: width;
-		transition: width var(--ifm-transition-fast) ease;
-		clip-path: inset(0);
-	}
-
-	.docSidebarContainerHidden {
-		width: var(--doc-sidebar-hidden-width);
-		cursor: pointer;
-	}
-
 	.collapsedDocSidebar {
 		position: sticky;
 		top: 0;

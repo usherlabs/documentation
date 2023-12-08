@@ -23,7 +23,7 @@ export default function DocRootLayout({ children }: Props): JSX.Element {
 						setHiddenSidebarContainer={setHiddenSidebarContainer}
 					/>
 				)}
-				<div>
+				<div className={styles.mainWrapper}>
 					{/* CUSTOM CODE - insert navbar here */}
 					<Navbar />
 					<DocRootLayoutMain hiddenSidebarContainer={hiddenSidebarContainer}>
