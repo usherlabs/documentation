@@ -1,0 +1,325 @@
+openapi: 3.1.0
+info:
+  title: LogStore API
+security:
+  - basicAuth: [ ]
+servers:
+  - url: https://api.logstore.usher.so
+paths:
+  /streams/{id}/data/partitions/{partition}/{queryType}:
+    get:
+      summary: Query Data
+      operationId: queryData
+      description: |
+        ```http
+        /streams/{id}/data/partitions/{partition}/{queryType}
+        ```
+
+        The **Query Data** endpoint fetches data from a specific stream partition using three types of queries: **`last`**, **`from`**, **`range`**. The endpoint returns a stream of data, which can be processed in real-time or piece-by-piece,
+        rather than all at once.
+
+        - **`format`** to specify response data format, which can be **`object`** or **`raw`**.
+        - **`version`** to define the version of the data to query.
+        - Additional parameters like **`count`**, **`fromTimestamp`**, **`fromSequenceNumber`**, **`toTimestamp`**, **`toSequenceNumber`**, **`publisherId`**, and **`msgChainId`** to narrow down the data based on the chosen query type.
+        - **`verifyNetworkResponses`** to include additional metadata on the response, enabling client-side network
+          verification.
+
+        ### The Request Type
+
+        This API can be accessed either through regular HTTP requests or by utilizing Server-Sent Events (SSE). Regular HTTP
+        responses are limited to 5000 messages per request. This limitation is in place to prevent overloading the server or the
+        client with too much data at once.
+
+        If your system is compatible, we recommend using SSE. This approach allows for the processing of event messages in
+        real-time or incrementally, as opposed to processing all at once. This method can help conserve memory in your
+        application, especially when dealing with lengthy messages.
+
+        By default, your request will be processed as a standard HTTP request. However, if you
+        include `Accept: text/event-stream` in your request header, it will be treated as an SSE request.
+
+        When you use SSE, the final event that is streamed contains metadata about the request. Please refer to the subsequent
+        details for more information.
+
+        ### Response
+
+        Given these types:
+
+        ```tsx
+        // as specified in https://github.com/streamr-dev/streamr-specs/blob/master/PROTOCOL.md#stream-protocol
+        type RawMessage = [
+          version: number,
+          msgIdFields: string[],
+          msgRefFields: string[],
+          messageType: number,
+          contentType: number,
+          encryptionType: number,
+          groupKeyId: string,
+          content: string,
+          newGroupKey: string | null,
+          signatureType: number,
+          signature: string,
+        ];
+
+        type MessageObject = {
+          metadata: {
+            id: {
+              streamId: string;
+              streamPartition: number;
+              timestamp: number;
+              sequenceNumber: number;
+              publisherId: string;
+              msgChainId: string;
+            };
+            prevMsgRef: null | object;
+            messageType: number;
+            contentType: number;
+            encryptionType: number;
+            groupKeyId: string | null;
+            newGroupKey: string | null;
+            signature: string;
+          };
+          content: object;
+        };
+
+        type HTTPQueryJSONResponse = {
+          messages: MessageObject[];
+          metadata: {
+            hasNext: boolean;
+            nextTimestamp: number;
+            nextSequenceNumber: number;
+            totalMessages: number;
+            participatingNodesAddress?: string[]; // included when network is verified
+            requestId?: string; // included when network is verified
+          };
+        };
+        ```
+
+        These are the response shapes depending on the type of request and `format` parameter used:
+
+        | Shape of the response based on format parameter and request type | HTTP                                        | SSE                                                                                              |
+        | ---------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+        | `raw`                                                            | Stringified `RawMessage`, separated by ‘\n’ | Each event is a stringified `RawMessage`.<br/><br/>The last event is a `StreamResponseMetadata` |
+        | `object`                                                         | `HTTPQueryJSONResponse`                     | Each event is a `MessageObject`.</br></br>The last event is a `StreamResponseMetadata`           |
+
+        #### Content Encryption
+        Content encryption depends on the privacy settings of your stream. For public streams, the content of your messages remains unencrypted. However, for private streams, the content is encrypted for added security.
+
+        Our client, which extends the `StreamrClient` class, is designed to handle the decryption process for you. This process involves a key exchange mechanism, which necessitates the online presence of the publisher(s). For more detailed information, please refer to the [Streamr Documentation](https://docs.streamr.network/streamr-network/security/end-to-end-encryption/#key-exchange).
+      security:
+        - basicAuth: [ ]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the stream.
+        - in: path
+          name: partition
+          required: true
+          schema:
+            type: integer
+          description: The partition number within the stream.
+        - in: path
+          name: queryType
+          required: true
+          schema:
+            type: string
+            enum: [ last, from, range ]
+          description: The type of query to perform.
+        - in: query
+          name: format
+          schema:
+            type: string
+            enum: [ object, raw ]
+          description: The format of the response. See the descriptions above
+        - in: query
+          name: version
+          schema:
+            type: integer
+          description: The version of the data to use. Default is the latest.
+        - in: query
+          name: count
+          schema:
+            type: integer
+          description: The number of records to fetch (only for 'last' query type).
+        - in: query
+          name: fromTimestamp
+          schema:
+            type: integer
+          description: The starting timestamp for the query (for 'from' and 'range' query types).
+        - in: query
+          name: fromSequenceNumber
+          schema:
+            type: integer
+          description: The starting sequence number (for 'from' and 'range' query types).
+        - in: query
+          name: toTimestamp
+          schema:
+            type: integer
+          description: The ending timestamp for the query (only for 'range' query type).
+        - in: query
+          name: toSequenceNumber
+          schema:
+            type: integer
+          description: The ending sequence number (only for 'range' query type).
+        - in: query
+          name: publisherId
+          schema:
+            type: string
+          description: The ID of the publisher (only for 'range' query type when `publisherId` is given).
+        - in: query
+          name: msgChainId
+          schema:
+            type: string
+          description: The ID of the message chain (only for 'range' query type when `publisherId` is given).
+        - in: query
+          name: verifyNetworkResponses
+          schema:
+            type: boolean
+          description: |
+            When set to `true`, the response will include additional metadata, enabling client-side network verification.
+      responses:
+        '200':
+          description: A successful operation will return a stream of the requested data. The structure of each item in the stream will depend on the specified format and query parameters.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/HTTPQueryJSONResponse'
+                    title: 'object format'
+                    description: A `HTTPQueryJSONResponse` item for `object` format.
+                  - type: string
+                    title: 'raw format'
+                    description: A newline-separated string of `RawMessage` items followed by a stringified `HTTPResponseMetadata` item for `raw` format.
+                    example: '[32, [...msgIdFields], [...msgRefFields], 27, 0, 0, null, "{\"foo\":42}", null, 2, "0x29c057786Fa..."]\n[32, [...msgIdFields], [...msgRefFields], 27, 0, 0, null, "{\"foo\":42}", null, 2, "0x29c057786Fa..."]\n[32, [...msgIdFields], [...msgRefFields], 27, 0, 0, null, "{\"foo\":42}", null, 2, "0x29c057786Fa..."]\n{"hasNext":false,"nextTimestamp":0,"nextSequenceNumber":0,"totalMessages":3}'
+            text/event-stream:
+              schema:
+                oneOf:
+                  - type: string
+                    example: |
+                      [32, [...msgIdFields], [...msgRefFields], 27, 0, 0, null, "{\"foo\":42}", null, 2, "0x29c057786Fa..."]
+                      [32, [...msgIdFields], [...msgRefFields], 27, 0, 0, null, "{\"foo\":42}", null, 2, "0x29c057786Fa..."]
+                      {"hasNext":false,"nextTimestamp":0,"nextSequenceNumber":0,"totalMessages":3}
+                    title: 'raw format'
+                    description: a`RawMessage` items for `raw` format followed by a `VerificationMetadata` item.
+                  - oneOf:
+                      - $ref: '#/components/schemas/MessageObject'
+                      - $ref: '#/components/schemas/VerificationMetadata'
+        '400':
+          description: An invalid input response is returned when the request parameters are not valid, such as an invalid `id` or `queryType`.
+          content:
+            application/json:
+              examples:
+                invalidInput:
+                  value:
+                    status: 400
+                    error: 'Invalid input. Please check your request parameters.'
+        '500':
+          description: A failure to fetch data is typically due to a server-side issue.
+          content:
+            application/json:
+              examples:
+                failedToFetchData:
+                  value:
+                    status: 500
+                    error: 'Failed to fetch data!'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      bearerFormat: base64
+      description: |
+        Basic Authentication is employed using Ethereum wallet address and its signature, Base64-encoded in the 'Authorization' header as `Authorization: Basic {Base64 encoded walletAddress:signature}`.
+
+        Note: Improper authentication will lead to a '401 Unauthorized' response. For further guidance and best practices, please consult the Authentication section of the API documentation.
+  schemas:
+    HTTPQueryJSONResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageObject'
+        metadata:
+          allOf:
+            - $ref: '#/components/schemas/HTTPMetadata'
+            - $ref: '#/components/schemas/VerificationMetadata'
+    MessageObject:
+      type: object
+      properties:
+        metadata:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/MessageId'
+            prevMsgRef:
+              type: object
+            messageType:
+              type: integer
+            contentType:
+              type: integer
+            encryptionType:
+              type: integer
+            groupKeyId:
+              type: string
+            newGroupKey:
+              type: string
+            signature:
+              type: string
+        content:
+          type: object
+    RawMessage:
+      type: array
+      example:
+        - 32
+        - [ ...msgIdFields ]
+        - [ ...msgRefFields ]
+        - 27
+        - 0
+        - 0
+        - null
+        - "{\"foo\":42}"
+        - null
+        - 2
+        - "0x29c057786Fa..."
+    HTTPMetadata:
+      type: object
+      properties:
+        hasNext:
+          type: boolean
+        nextTimestamp:
+          type: integer
+        nextSequenceNumber:
+          type: integer
+        totalMessages:
+          type: integer
+    VerificationMetadata:
+      type: object
+      properties:
+        participatingNodesAddress:
+          type: array
+          items:
+            type: string
+        requestId:
+          type: string
+    HTTPResponseMetadata:
+      allOf:
+        - $ref: '#/components/schemas/HTTPMetadata'
+        - $ref: '#/components/schemas/VerificationMetadata'
+    MessageId:
+      type: object
+      properties:
+        streamId:
+          type: string
+        streamPartition:
+          type: integer
+        timestamp:
+          type: integer
+        sequenceNumber:
+          type: integer
+        publisherId:
+          type: string
+        msgChainId:
+          type: string

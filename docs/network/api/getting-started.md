@@ -1,8 +1,64 @@
 ---
-title: 'Coming Soon'
+title: 'Getting Started'
 sidebar_position: 1
 ---
 
-Direct API access to the Log Store Network for Storage and Queries is coming soon.
+# Getting Started
 
-If you need it sooner, please let us know in our Discord!
+Welcome to the LogStore API, an HTTP API designed to facilitate efficient data storage and retrieval. Whether you're
+building a web application, mobile app, or a complex data processing system, our API can integrate seamlessly with your
+code to provide a robust and reliable storage solution.
+
+### **Base URL**
+
+To interact with the LogStore API, you'll need to send requests to a running API node. The base URL of our managed
+LogStore API is **`https://api.logstore.usher.so`** and it’s ready for usage.
+
+### **Request and Response Format**
+
+Interactions with the LogStore API are facilitated through HTTP requests, or alternatively, Server-Sent Events (SSE).
+The format of the response data is typically determined by a specific parameter.
+Standard HTTP response status codes such as 200 (OK), 400 (Bad Request), and 500 (Internal Server Error) are utilized to
+signify the outcome of your request
+
+### **Prerequisites**
+
+Before you can start using the LogStore API, there are a few things you need to know:
+
+1. **Authentication**: To use the LogStore API, you'll need to authenticate your requests. This is done using your API
+	 keys. More information on this can be found in the **Authentication** section.
+2. **Ethereum Wallet**: Given the Ethereum-based authentication mechanism, you'll need an Ethereum wallet to interact
+	 with the API. To perform queries it’s also necessary to have staked LSAN Tokens.
+
+	 [Learn more on how to stake LSAN at our CLI section →](../cli/getting-started.md)
+
+### **Quickstart Guide**
+
+Ready to make your first API call? Here's a simple example using JavaScript:
+
+```js title="JS Example"
+const axios = require('axios');
+const API_BASE_URL = 'https://api.logstore.usher.so';
+
+axios
+	.get(`${API_BASE_URL}/my-endpoint`, {
+		headers: {
+			// replace with your actual API key
+			Authorization: 'Basic {Base64 encoded user:signature}',
+		},
+	})
+	.then((response) => {
+		console.log(response.data);
+	})
+	.catch((error) => {
+		console.error(`Error: ${error}`);
+	});
+```
+
+This script sends a GET request to the `my-endpoint` endpoint. Replace `{Base64 encoded user:signature}` with your own
+user and signature in the format described in
+the [Authentication](../../docs/network/api/authentication.mdapi/authentication.md) section.
+
+:::info
+Storage via API is a work in progress.
+If you need this sooner, please contact us at our Discord channel.
