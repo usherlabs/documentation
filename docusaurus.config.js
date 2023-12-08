@@ -1,8 +1,10 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const path = require('path');
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const {
+	github: lightCodeTheme,
+	dracula: darkCodeTheme,
+} = require('prism-react-renderer');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -77,33 +79,34 @@ const config = {
 			{
 				customCss: [
 					require.resolve(
-						'./node_modules/modern-normalize/modern-normalize.css'
+						'./node_modules/modern-normalize/modern-normalize.css',
 					),
 					require.resolve('./src/styles/custom.scss'),
 				],
 			},
 		],
+		// 'docusaurus-theme-redoc',
 		// path.resolve(__dirname, './node_modules/@docusaurus/theme-search-algolia'), // INITIAL TODO if needed to activate algolia
 	],
 
 	presets: [
-		// [
-		// 	'redocusaurus',
-		// 	{
-		// 		// Plugin Options for loading OpenAPI files
-		// 		specs: [
-		// 			{
-		// 				spec: './docs/network/api/_api.spec.yaml',
-		// 				route: '/network/api/reference',
-		// 			},
-		// 		],
-		// 		// Theme Options for modifying how redoc renders them
-		// 		theme: {
-		// 			// Change with your site colors
-		// 			primaryColor: '#1890ff',
-		// 		},
-		// 	},
-		// ],
+		[
+			'redocusaurus',
+			{
+				// Plugin Options for loading OpenAPI files
+				specs: [
+					{
+						spec: './docs/network/api/_api.spec.yaml',
+						route: '/network/api/reference',
+					},
+				],
+				// Theme Options for modifying how redoc renders them
+				theme: {
+					// Change with your site colors
+					primaryColor: '#1890ff',
+				},
+			},
+		],
 	],
 
 	themeConfig:
