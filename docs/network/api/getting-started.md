@@ -57,7 +57,7 @@ axios
 
 This script sends a GET request to the `my-endpoint` endpoint. Replace `{Base64 encoded user:signature}` with your own
 user and signature in the format described in
-the [Authentication](../../docs/network/api/authentication.mdapi/authentication.md) section.
+the [Authentication](./authentication.md) section.
 
 :::info
 Storage via API is a work in progress.
