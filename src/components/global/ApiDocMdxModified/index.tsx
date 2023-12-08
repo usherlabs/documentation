@@ -23,8 +23,9 @@ const ApiDocMdxModified: React.FC<theme.Props> = ({
 			theme: {
 				// TODO: Investigate what the best breakpoints should be
 				breakpoints: {
-					medium: '130rem',
-					large: '130rem',
+					small: '110rem',
+					medium: '140rem',
+					large: '150rem',
 				},
 				codeBlock: {
 					borderRadius: 4,
