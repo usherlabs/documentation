@@ -7,7 +7,7 @@
 	display: flex;
 }
 
-.docPage,
+.docRoot,
 .docMainContainer {
 	display: flex;
 	width: 100%;
