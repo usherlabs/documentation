@@ -91,7 +91,7 @@ const standaloneClient = new LogStoreClient({
 });
 ```
 
-### **Configuring for Standalone Node**
+### Configuring for Standalone Node
 
 When working with a Standalone Log Store Node, you can direct the Log Store Client to interact specifically with your node using the **`nodeUrl`** configuration parameter. This is particularly useful for querying data from a node that operates independently of the decentralized network.
 
