@@ -66,3 +66,33 @@ export interface LogStoreClientConfig extends StreamrClientConfig {
 	};
 }
 ```
+
+## Example
+
+Here's how you can configure it for different purposes:
+
+```ts
+import LogStoreClient from '@logsn/client';
+
+// Standard configuration
+const client = new LogStoreClient({
+    auth: {
+        privateKey: 'your-private-key',
+    },
+    // Other configuration options...
+});
+
+// Configuration for Standalone Node
+const standaloneClient = new LogStoreClient({
+    auth: {
+        privateKey: 'your-private-key',
+    },
+    nodeUrl: 'http://your-standalone-node-url',
+});
+```
+
+### Configuring for Standalone Node
+
+When working with a Standalone Log Store Node, you can direct the Log Store Client to interact specifically with your node using the **`nodeUrl`** configuration parameter. This is particularly useful for querying data from a node that operates independently of the decentralized network.
+
+- **`nodeUrl`**: Specify the API URL of your Standalone Log Store Node. Queries and other interactions will be executed against this specified URL.

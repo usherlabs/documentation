@@ -9,19 +9,19 @@ Welcome to the LogStore API, an HTTP API designed to facilitate efficient data s
 building a web application, mobile app, or a complex data processing system, our API can integrate seamlessly with your
 code to provide a robust and reliable storage solution.
 
-### **Base URL**
+### Base URL
 
 To interact with the LogStore API, you'll need to send requests to a running API node. The base URL of our managed
 LogStore API is **`https://api.logstore.usher.so`** and it’s ready for usage.
 
-### **Request and Response Format**
+### Request and Response Format
 
 Interactions with the LogStore API are facilitated through HTTP requests, or alternatively, Server-Sent Events (SSE).
 The format of the response data is typically determined by a specific parameter.
 Standard HTTP response status codes such as 200 (OK), 400 (Bad Request), and 500 (Internal Server Error) are utilized to
 signify the outcome of your request
 
-### **Prerequisites**
+### Prerequisites
 
 Before you can start using the LogStore API, there are a few things you need to know:
 
@@ -32,7 +32,7 @@ Before you can start using the LogStore API, there are a few things you need to 
 
 	 [Learn more on how to stake LSAN at our CLI section →](../cli/getting-started.md)
 
-### **Quickstart Guide**
+### Quickstart Guide
 
 Ready to make your first API call? Here's a simple example using JavaScript:
 

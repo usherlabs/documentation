@@ -130,6 +130,12 @@ const config = {
 						label: 'Network',
 						position: 'left',
 					},
+					{
+						type: 'docSidebar',
+						sidebarId: 'node',
+						label: 'Node',
+						position: 'left',
+					},
 					// Right side starts here
 					{
 						type: 'search',
