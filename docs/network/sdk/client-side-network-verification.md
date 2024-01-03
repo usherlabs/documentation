@@ -1,17 +1,17 @@
 ---
 title: 'Client-side Network Verification'
-sidebar_position: 5
+sidebar_position: 6
 ---
 
-## Introduction to Network Verification in LogStore
+## Introduction to Network Verification in Log Store
 
-Ensuring data integrity across a decentralized network is crucial for decentralized and tamper-proof data management. The LogStore client achieves this through network verification, which upholds trustless interactions. The verification process confirms data consistency and prevents any unauthorized alterations. This is especially important for applications like smart contracts and dApps that rely on tamper-proof data.
+Ensuring data integrity across a decentralized network is crucial for decentralized and tamper-proof data management. The Log Store client achieves this through network verification, which upholds trustless interactions. The verification process confirms data consistency and prevents any unauthorized alterations. This is especially important for applications like smart contracts and dApps that rely on tamper-proof data.
 
 Moreover, network verification enables self-auditing and discrepancy resolution, which ensures data consistency across nodes. This is critical for the network's reliability, making it more robust and trustworthy.
 
-## LogStore System Messages Explained
+## Log Store System Messages Explained
 
-System messages are events broadcasted through a system stream, designed to ensure consistency and verify communication in the LogStore Network. Here are some of the important system messages to query verifiability:
+System messages are events broadcasted through a system stream, designed to ensure consistency and verify communication in the Log Store Network. Here are some of the important system messages to query verifiability:
 
 ### `QueryRequest`
 
@@ -25,7 +25,7 @@ In response to a `QueryRequest`, nodes dispatch a `QueryResponse` containing the
 
 `QueryPropagate` messages address any data gaps left by the primary node’s `QueryResponse`, with secondary nodes providing the missing information. This mechanism maintains the ledger's completeness and accuracy, ensuring a reliable record across the network.
 
-The functionality of these system messages underpins the structural and operational integrity of the LogStore Network, supporting its role as a trusted entity in the decentralized landscape.
+The functionality of these system messages underpins the structural and operational integrity of the Log Store Network, supporting its role as a trusted entity in the decentralized landscape.
 
 ## Client-Side Verification Process
 
@@ -33,7 +33,7 @@ The functionality of these system messages underpins the structural and operatio
 To enable the client-side verification feature during a query, you can set the `verifyNetworkResponses` option to `true`. This option is available in the `query` method within the `LogStoreClient`. For detailed instructions on utilizing this option, please refer to the `query` method documentation in the [**Query Data section**](./query-data.md).
 :::
 
-LogStore's client-side verification is an elective feature that ensures the integrity of HTTP response data by comparing it against system messages. This parallel verification to query fulfillment provides an added layer of data validation. The steps are as follows:
+Log Store's client-side verification is an elective feature that ensures the integrity of HTTP response data by comparing it against system messages. This parallel verification to query fulfillment provides an added layer of data validation. The steps are as follows:
 
 1. **Initiation**: Users can initiate verification alongside their `query`, allowing for simultaneous data retrieval and network integrity checks.
 2. **Parallel Verification**: As the client fetches data via HTTP, it also listens to the system stream, ensuring the received data is cross-verified.
@@ -42,11 +42,11 @@ LogStore's client-side verification is an elective feature that ensures the inte
 5. **Matrix Scrutiny**: The matrix undergoes a thorough analysis to confirm data consistency and network reliability.
 6. **Timed Verification**: The process is time-sensitive, with timeouts triggering error protocols to address any discrepancies.
 
-This verification mechanism is integral to the trust and transparency offered by the LogStore network, allowing users to independently confirm the fidelity of the data they utilize.
+This verification mechanism is integral to the trust and transparency offered by the Log Store network, allowing users to independently confirm the fidelity of the data they utilize.
 
 ## The Storage Matrix: Organizing Data Responses
 
-Within the LogStore client-side verification process, the Storage Matrix is a data structure that maps data events to reporting nodes.
+Within the Log Store client-side verification process, the Storage Matrix is a data structure that maps data events to reporting nodes.
 
 ### Structure Details
 
@@ -89,7 +89,7 @@ Here, `eventId1` is confirmed by nodes `0x123` and `0x789`, while `eventId2` and
 Empowering users with tools for verification serves several critical functions:
 
 - **Independent Verification**: Enables users to personally attest to data integrity, enhancing trust and transparency without the reliance on third-party audits.
-- **Developer Trust**: Assures developers of data consistency and security, which is critical for building reliable applications on the LogStore network.
+- **Developer Trust**: Assures developers of data consistency and security, which is critical for building reliable applications on the Log Store network.
 - **Operational Integrity**: Essential tools that validate the functional correctness of network data, supporting the overall health and function of the network.
 - **Accessible Transparency**: Offers a user-friendly verification process, promoting an open and accountable network environment for all users.
 

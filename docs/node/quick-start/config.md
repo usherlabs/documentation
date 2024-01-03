@@ -29,11 +29,13 @@ Standalone and Network modes.
 
 ### Standalone Mode Configuration
 
-| Object.Property     | Description                                                                        |
-|---------------------|------------------------------------------------------------------------------------|
-| mode.type           | Set to 'standalone' for Standalone Mode.                                           |
-| mode.trackedStreams | Array of objects defining streams to track and the number of partitions they have. |
-| mode.topicsStream   | Stream ID for validation results from predefined processes.                        |
+| Object.Property             | Description                                                                        |
+|-----------------------------|------------------------------------------------------------------------------------|
+| mode.type                   | Set to 'standalone' for Standalone Mode.                                           |
+| mode.trackedStreams         | Array of objects defining streams to track and the number of partitions they have. |
+| mode.topicsStream           | Stream ID for validation results from predefined processes.                        |
+| mode.validationErrorsStream | Stream ID for schema validation errors.                                            |
+
 
 ### Network Mode Configuration
 
