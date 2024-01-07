@@ -1,0 +1,3 @@
+{
+	"rewrites": [{ "source": "/node/overview/redirect", "destination": "/node" }]
+}

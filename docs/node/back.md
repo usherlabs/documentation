@@ -1,0 +1,6 @@
+---
+title: Back to Node Overview
+sidebar_position: 99
+sidebar_class_name: 'footer_sidebar'
+slug: /node/overview/redirect
+---

@@ -147,6 +147,27 @@ html[data-theme='dark'] {
 				opacity: 0.7;
 			}
 		}
+
+		// ! Insert External URL Icons here!
+		// &[href="/node/overview/redirect"]::after {
+		// 	content: url('../img/external.png');
+		// 	opacity: 0.2;
+		// 	position: absolute;
+		// 	right: 30px;
+		// 	object-fit: contain;
+		// 	transform: scale(0.7);
+		// }
+
+		// // ! Insert Back Icons here!
+		// &[href="/node/overview/redirect"]::after {
+		// 	content: url('../img/left-arrow.png');
+		// 	// opacity: 0.2;
+		// 	position: absolute;
+		// 	left: 32px;
+		// 	object-fit: contain;
+		// }
+
+		// TODO: Getting icons to work in Sidebar Menu Items needs to ensure they disappear on mobile between menu switches.
 	}
 
 	.menu__link--sublist {
@@ -202,5 +223,10 @@ html[data-theme='dark'] {
 			font-size: 0.938rem;
 			line-height: 100%;
 		}
+	}
+
+
+	.footer_sidebar {
+		padding-top: 40px
 	}
 }

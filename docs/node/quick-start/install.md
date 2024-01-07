@@ -1,5 +1,5 @@
 ---
-title: 'Instalation & Deployment'
+title: 'Installation & Deployment'
 sidebar_position: 1
 ---
 
