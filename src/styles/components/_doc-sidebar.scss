@@ -225,6 +225,11 @@ html[data-theme='dark'] {
 		}
 	}
 
+	.navbar-sidebar__back {
+		background-color: rgba(0, 0, 0, 0.1) !important;
+		padding-left: 10px !important;
+		border-radius: 4px;
+	}
 
 	.footer_sidebar {
 		padding-top: 40px

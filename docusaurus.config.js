@@ -52,20 +52,6 @@ const config = {
 					'https://github.com/usherlabs/logstore/tree/master/docs/',
 			},
 		],
-
-		// ? Redirects handled in vercel.json
-		// [
-		// 	'@docusaurus/plugin-client-redirects',
-		// 	{
-		// 		redirects: [
-		// 			{
-		// 				to: '/node',
-		// 				from: '/node/overview/redirect'
-		// 			}
-		// 		]
-		// 	}
-		// ],
-
 		// This plugin enables tailwind
 		// async function myPlugin(context, options) {
 		async function myPlugin() {
