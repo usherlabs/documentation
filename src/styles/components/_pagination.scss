@@ -15,6 +15,13 @@
 			margin-block-end: 1rem;
 		}
 
+		.pagination-nav__link {
+			background-color: rgb(245, 245, 245);
+			&:hover {
+				background-color: rgb(240, 240, 240);
+			}
+		}
+
 		//Previous item
 		> div:first-of-type {
 			.pagination-nav__link {

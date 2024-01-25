@@ -1,9 +1,9 @@
 html[data-theme='light'] {
-	--ifm-table-border-color: theme('colors.indigo.300');
+	--ifm-table-border-color: theme('colors.gray.300');
 }
 
 html[data-theme='dark'] {
-	--ifm-table-border-color: theme('colors.gray.900');
+	--ifm-table-border-color: theme('colors.gray.100');
 }
 
 :root {

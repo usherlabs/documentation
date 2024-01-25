@@ -64,6 +64,26 @@ const config = {
 				},
 			};
 		},
+
+		[
+			'@docusaurus/plugin-client-redirects',
+			{
+				redirects: [
+					{
+						from: ['/network/overview/paper', '/network/overview/papers'],
+						to: '/papers',
+					},
+					{
+						from: ['/network/overview/lightpaper'],
+						to: '/papers/logstore/lightpaper',
+					},
+					{
+						from: ['/network/overview/use-cases', '/use-cases'],
+						to: '/papers/logstore/use-cases',
+					},
+				],
+			},
+		],
 	],
 	// algolia: { // INITIAL TODO to activate algolia search. Fill according to your needs
 	//     appId: '',
@@ -133,6 +153,12 @@ const config = {
 						type: 'docSidebar',
 						sidebarId: 'node',
 						label: 'Node',
+						position: 'left',
+					},
+					{
+						type: 'docSidebar',
+						sidebarId: 'papers',
+						label: 'Papers',
 						position: 'left',
 					},
 					// Right side starts here
