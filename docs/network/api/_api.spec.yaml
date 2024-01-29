@@ -6,13 +6,13 @@ security:
 servers:
   - url: https://api.logstore.usher.so
 paths:
-  /streams/{id}/data/partitions/{partition}/{queryType}:
+  /stores/{id}/data/partitions/{partition}/{queryType}:
     get:
       summary: Query Data
       operationId: queryData
       description: |
         ```http
-        /streams/{id}/data/partitions/{partition}/{queryType}
+        /stores/{id}/data/partitions/{partition}/{queryType}
         ```
 
         The **Query Data** endpoint fetches data from a specific stream partition using three types of queries: **`last`**, **`from`**, **`range`**. The endpoint returns a stream of data, which can be processed in real-time or piece-by-piece,
