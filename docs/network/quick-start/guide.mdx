@@ -4,7 +4,9 @@ sidebar_position: 1
 slug: '/'
 ---
 
-# Quick Start Guide to the Log Store Network
+import LoomVideo from '@site/src/components/global/LoomVideo';
+
+# Quick Start Guide
 
 The Log Store Network is a platform for data availability, specializing in high-frequency, time-indexed cryptographic attestations, effectively serving as a decentralized, time-series database.
 Built atop the Streamr Network, it facilitates the collection of real-time signed metrics and attestations from both off-chain and real-world occurrences through a peer-to-peer data transport layer.
@@ -19,8 +21,18 @@ This guide will walk you through:
 ### Installation
 
 **CLI Tool & JavaScript Client:** Begin by installing our CLI tool and JavaScript client to interact with the Log Store Network.
-The CLI tool, suitable for command-line interactions, can be installed with `npm i -g @logsn/cli`.
-For programmatic access, the JavaScript Client/SDK is available via `npm i @logsn/client`.
+The CLI tool, suitable for command-line interactions, can be installed with:
+
+```shell
+npm i -g @logsn/cli
+```
+
+For programmatic access, the JavaScript Client/SDK is available via:
+
+```shell
+npm i @logsn/client
+```
+
 Additionally, our smart contracts are accessible on the Polygon Network, with details available on our [GitHub repository](https://github.com/usherlabs/logstore/tree/master/packages/contracts).
 
 ### Configuration
@@ -32,23 +44,21 @@ Alternatively, use the `--host` and `--wallet` flags for direct configuration.
 
 A stream must be created before data storage or querying can occur. This can be achieved through the CLI, Streamr Client, or Streamr UI.
 
-**CLI Example:**
+- CLI Example:
 
-```shell
-logstore create-stream ${streamId} --host https://polygon-rpc.com/ --wallet ${privateKey}
-```
+  ```shell
+  logstore create-stream ${streamId} --host https://polygon-rpc.com/ --wallet ${privateKey}
+  ```
 
-[**Streamr Client**](https://docs.streamr.network/usage/streams/creating-streams)
+- [Streamr Client →](https://docs.streamr.network/usage/streams/creating-streams)
+- [Streamr UI →](https://streamr.network/hub/streams/new)
+- Streamr UI Demo:
 
-[**Streamr UI**](https://streamr.network/hub/streams/new).
-
-**Streamr UI Demo**:
-
-<LoomVideo
-	src={`https://www.loom.com/embed/1cb8e1d179304a12b5bb99164ebe2c97`}
-	hideOwner
-	hideTitle
-/>
+  <LoomVideo
+  	src={`https://www.loom.com/embed/1cb8e1d179304a12b5bb99164ebe2c97`}
+  	hideOwner
+  	hideTitle
+  />
 
 ## Funding Stores & Queries
 

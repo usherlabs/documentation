@@ -1,5 +1,5 @@
 ---
-title: 'Client-side Network Verification'
+title: 'Network Verification'
 sidebar_position: 6
 ---
 
