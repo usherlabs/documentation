@@ -81,6 +81,10 @@ const config = {
 						from: ['/network/overview/use-cases', '/use-cases'],
 						to: '/papers/logstore/use-cases',
 					},
+					{
+						from: ['/network/sdk/client-side-network-verification'],
+						to: '/network/sdk/network-verification',
+					},
 				],
 			},
 		],

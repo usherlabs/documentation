@@ -41,16 +41,18 @@ Returns a Promise that resolves to an object with a `blockNumber` property indic
 ## Example
 
 ```ts
-import LogStoreClient from '@logsnclient';
+import { StreamrClient } from 'streamr-client';
+import { LogStoreClient } from '@logsn/client';
 
-const logStoreClient = new LogStoreClient({
+const streamrClient = new StreamrClient({
 	auth: {
 		privateKey: 'your-private-key',
 	},
 });
+const logStoreClient = new LogStoreClient(streamrClient);
 
 // Create a new stream -- from StreamrClient
-const newStream = await logStoreClient.createStream({
+const newStream = await streamrClient.createStream({
 	id: 'domain/streamId',
 });
 
@@ -59,7 +61,7 @@ const newStream = await logStoreClient.createStream({
 await logStoreClient.stakeOrCreateStore(myStreamId, STAKE_AMOUNT);
 
 // Publish messages to this stream
-logStoreClient.publish(myStreamId, {
+streamrClient.publish(myStreamId, {
 	hello: 'world',
 });
 ```

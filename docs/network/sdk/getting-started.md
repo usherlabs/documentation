@@ -24,7 +24,7 @@ npm i @logsn/client
 Then,
 
 ```ts
-import LogStoreClient from '@logsn/client';
+import { LogStoreClient } from '@logsn/client';
 
 // --- or ---
 
@@ -50,18 +50,22 @@ For usage in the browser include the latest build, e.g. by including a `<script>
 ## The LogStoreClient Class
 
 ```ts
-constructor(config?: LogStoreClientConfig)
+constructor(streamrClient: StreamrClient, config?: LogStoreClientConfig)
 ```
 
-This is the constructor for the `LogStoreClient` class. It takes an optional configuration object, `config` of type `LogStoreClientConfig`, which can be used to configure the client. .
+This is the constructor for the `LogStoreClient` class. It is desgined to wrap the `StreamrClient`. It takes an optional configuration object, `config` of type `LogStoreClientConfig`, which can be used to configure the client.
 
 ```ts
-import { StreamrClientConfig } from 'streamr-client';
-
-export interface LogStoreClientConfig extends StreamrClientConfig {
-	contracts?: StreamrClientConfig['contracts'] & {
+export interface LogStoreClientConfig {
+	/** Custom human-readable debug id for client. Used in logging. */
+	id?: string;
+	logLevel?: LogLevel;
+	nodeUrl?: string;
+	contracts?: {
 		logStoreNodeManagerChainAddress?: string;
 		logStoreStoreManagerChainAddress?: string;
+		logStoreQueryManagerChainAddress?: string;
+		logStoreTokenManagerChainAddress?: string;
 		logStoreTheGraphUrl?: string;
 	};
 }
@@ -72,22 +76,16 @@ export interface LogStoreClientConfig extends StreamrClientConfig {
 Here's how you can configure it for different purposes:
 
 ```ts
-import LogStoreClient from '@logsn/client';
+import { StreamrClient } from 'streamr-client';
+import { LogStoreClient } from '@logsn/client';
 
 // Standard configuration
-const client = new LogStoreClient({
-    auth: {
-        privateKey: 'your-private-key',
-    },
-    // Other configuration options...
-});
+const streamrClient = new StreamrClient();
+const client = new LogStoreClient(streamrClient);
 
 // Configuration for Standalone Node
-const standaloneClient = new LogStoreClient({
-    auth: {
-        privateKey: 'your-private-key',
-    },
-    nodeUrl: 'http://your-standalone-node-url',
+const standaloneClient = new LogStoreClient(streamrClient, {
+	nodeUrl: 'http://your-standalone-node-url',
 });
 ```
 
