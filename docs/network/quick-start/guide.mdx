@@ -4,59 +4,45 @@ sidebar_position: 1
 slug: '/'
 ---
 
-import LoomVideo from '@site/src/components/global/LoomVideo';
+# Quick Start Guide to the Log Store Network
 
-# Quick Start Guide
+The Log Store Network is a platform for data availability, specializing in high-frequency, time-indexed cryptographic attestations, effectively serving as a decentralized, time-series database.
+Built atop the Streamr Network, it facilitates the collection of real-time signed metrics and attestations from both off-chain and real-world occurrences through a peer-to-peer data transport layer.
 
-The Log Store Network is a data availability platform for high-frequency time-indexed cryptographic attestations.
-In essence, it can be thought of as a decentralized, time-series database.
-It is designed to collect real-time signed metrics and attestations about things occurring off-chain and in the real-world.
-The Log Store is developed on top of the Streamr Network, a peer-to-peer pub/sub data transport layer.
-As such, data is published to the Log Store by registering streams are registered in the Log Store Network's Smart Contracts.
+This guide will walk you through:
 
-In this guide, we'll describe how to:
-
-1. Create a stream.
+1. Creating a stream.
 2. Funding your Stores & Queries.
-3. Store real-time data to in the network.
-4. Query from the network
+3. Storing real-time data.
+4. Querying the network.
 
-We will elaborate on all the steps listed above in the coming paragraphs.
+### Installation
 
-## Installing the CLI Tool and JavaScript Client
+**CLI Tool & JavaScript Client:** Begin by installing our CLI tool and JavaScript client to interact with the Log Store Network.
+The CLI tool, suitable for command-line interactions, can be installed with `npm i -g @logsn/cli`.
+For programmatic access, the JavaScript Client/SDK is available via `npm i @logsn/client`.
+Additionally, our smart contracts are accessible on the Polygon Network, with details available on our [GitHub repository](https://github.com/usherlabs/logstore/tree/master/packages/contracts).
 
-In order to perform the key actions listed above, we will need to interact with the Log Store network and Interacting with the Log Store can be done via three major channels :- The CLI tool, the Javascript Client and the solidity smart contracts
+### Configuration
 
-**CLI →** More information on installing the CLI can be found [here](https://docs.logstore.usher.so/network/cli/getting-started), but it can be installed by running `npm i -g @logsn/cli` and is used for interacting with the Log Store network via the command line.
-
-**Client/SDK →** More information on installing the JavaScript client/SDK can be found [here](https://docs.logstore.usher.so/network/sdk/getting-started), but it can be installed by running `npm i @logsn/client` and is used for interacting with the Log Store network from a JavaScript program.
-
-**Contracts ->** The contracts are deployed on the polygon network, and the code, address and ABI can be found [here](https://github.com/usherlabs/logstore/tree/master/packages/contracts), and it can be instantiated for use using ethers.js or [remix](https://remix.ethereum.org/)
-
-### Configure the CLI
-
-Configure your RPC Endpoint using
-
-1. `logstore init`
-2. Edit your configuration file at `~/.logstore-cli/default.json`
-
-Otherwise you will need to pass the `--host` and `--wallet` flags.
+Configure the CLI tool by initializing it with `logstore init` and editing the `~/.logstore-cli/default.json` file.
+Alternatively, use the `--host` and `--wallet` flags for direct configuration.
 
 ## Creating a Stream
 
-Before you can store data on the network or query data from the network, you must first create a stream, and this can be done in three different ways.
+A stream must be created before data storage or querying can occur. This can be achieved through the CLI, Streamr Client, or Streamr UI.
 
-1. via the CLI: A stream can be created using the Log Store CLI tool via the following command:
+**CLI Example:**
 
 ```shell
-logstore create-stream ${streamId} --host [https://polygon-rpc.com](https://polygon-rpc.com/) --wallet ${privateKey}
+logstore create-stream ${streamId} --host https://polygon-rpc.com/ --wallet ${privateKey}
 ```
 
-2. via the [Streamr Client](https://docs.streamr.network/usage/streams/creating-streams)
+[**Streamr Client**](https://docs.streamr.network/usage/streams/creating-streams)
 
-3. via the Streamr UI: The URL to the UI can be found [here](https://streamr.network/hub/streams/new). Fill in the name of the stream and submit the details.
+[**Streamr UI**](https://streamr.network/hub/streams/new).
 
-**Creating a Streamr Stream Demo**
+**Streamr UI Demo**:
 
 <LoomVideo
 	src={`https://www.loom.com/embed/1cb8e1d179304a12b5bb99164ebe2c97`}
@@ -64,26 +50,23 @@ logstore create-stream ${streamId} --host [https://polygon-rpc.com](https://poly
 	hideTitle
 />
 
-## Funding your Stores & Queries
+## Funding Stores & Queries
 
-The **LSAN** token is the native token of the Log Store's Alpha Network. To learn more about this, visit [AlphaNet](../overview/alphanet.md)
-To obtain this token is to reach out to the admins and developers for some test tokens on [discord](https://go.usher.so/discord).
-[Learn how to mint **LSAN** →](https://docs.logstore.usher.so/network/cli/mint-lsan)
+The Log Store Network is an Alpha, and therefore uses **LSAN** tokens for its operations. The [AlphaNet](../overview/alphanet.md) explains this in detail.
+Obtain test tokens via our [Discord](https://go.usher.so/discord) and/or learn about [minting **LSAN**](../cli/mint-lsan.md).
 
-## Publishing
+## Publishing Data
 
-Before you can publish to an already created stream, you need to stake some LSAN tokens, and this can be done both via the CLI tool and the Client.
+After obtaining **LSAN** tokens, you can publish data to your stream.
+This requires prior staking of **LSAN** tokens, which can be done using both the CLI tool and the Client.
 
-Using the following methods, one can stake some LSAN tokens.
-
-**CLI:**
-Using the CLI tool installed earlier, we can specify a `streamId`, a `stakeAmount` and a `privateKey` in order to stake a certain amount of LSAN tokens to the network.
+**CLI Example:**
 
 ```shell
-logstore store stake ${streamId} ${stakeAmount} --host https://polygon-rpc.com/ --wallet ${privateKey}
+logstore store stake ${streamId} ${stakeAmountInWei} --host https://polygon-rpc.com/ --wallet ${privateKey}
 ```
 
-**Client:**
+**Client Example:**
 
 ```javascript
 import { StreamrClient } from "streamr-client";
@@ -104,7 +87,6 @@ const stakeAmount = 10000;
 
 	// Get the stream
 	const stream = await streamrClient.getStream(streamId);
-	console.log({ stream });
 
 	// Stake to the stream
 	const stakeAmount = 10;
@@ -113,26 +95,27 @@ const stakeAmount = 10000;
 	   stakeAmount
 	);
 
+	// Publish messages to this stream
+	await streamrClient.publish(
+		stream.id,
+		{
+			hello: 'world',
+		}
+	);
 })();
 ```
 
-Then, we can proceed to publish data to the stream.
-To learn how to do this, please view [Streamr Documentation on Publishing](https://docs.streamr.network/usage/streams/publishing).
+## Querying Data
 
-## Querying
+Similar to publishing, querying data from a stream requires staking **LSAN** tokens, with the ability to query any stream post-stake.
 
-Before you can query from a stream, you need to stake some LSAN tokens to the network, a query stake different from the stake earlier for storage of the data of a particular stream to the network.
-
-Using the following methods, one can stake some LSAN tokens to the network for the purpose of performing a query.
-
-**CLI:**
-By specifying a wallet address and an amount to stake we can successfully stake for the purpose of querying from the network. You might notice we do not specify a stream, that is because you can query from any stream after this stake.
+**CLI Example:**
 
 ```shell
-logstore query stake --host https://polygon-rpc.com/ --wallet ${walletAddress} ${amount}
+logstore query stake --host https://polygon-rpc.com/ --wallet ${privateKey} ${amountInWei}
 ```
 
-**Client:**
+**Client Example:**
 
 ```javascript
 import { StreamrClient } from "streamr-client";
@@ -155,31 +138,10 @@ const stakeAmount = 10000;
 	const response = await logStoreClient.queryStake(
 	   stakeAmount
 	);
-})();
-```
 
-Then, we can proceed to query data to the stream.
-
-```javascript
-import { StreamrClient } from "streamr-client";
-import { LogStoreClient } from "@logsn/client";
-
-const privateKey = "privateKey";
-const streamId = "0xpublic_key/path/identifier";
-
-(function queryStream(){
-	// Initialize the Log Store client
-	const streamrClient = new StreamrClient({
-		auth: {
-			privateKey,
-		},
-	})
-	const logStoreClient = new LogStoreClient(streamrClient);
-
-	const stream = await streamrClient.getStream(streamId);
-
+	// Query from the stream
 	const query = await logStoreClient.query(
-	    stream.id,
+	    streamId,
 	    {
 	      // Should see the recently sent messages, along with 3 identical ones from storage
 	      last: 6,
