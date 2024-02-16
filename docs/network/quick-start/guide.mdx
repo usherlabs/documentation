@@ -86,7 +86,7 @@ const privateKey = "privateKey";
 const streamId = "0xpublic_key/path/identifier";
 const stakeAmount = 10000;
 
-(function createStore(){
+(async (){
 	// Initialize the LogStore client
 	const streamrClient = new StreamrClient({
 		auth: {
@@ -134,7 +134,7 @@ import { LogStoreClient } from "@logsn/client";
 const streamId = "0xpublic_key/path/identifier";
 const stakeAmount = 10000;
 
-(function queryStake(){
+(async (){
 	// Initialize the Log Store client
 	const streamrClient = new StreamrClient({
 		auth: {
