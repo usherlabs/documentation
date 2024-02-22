@@ -41,7 +41,7 @@ streamr stream grant-permission \
   publish subscribe
 ```
 
-### Adding a Stream to the Storage Proxy
+### Adding a Stream to the _Virtual_ Storage Node
 
 ```shell
 streamr storage-node add-stream \
@@ -50,7 +50,7 @@ streamr storage-node add-stream \
   /test-01
 ```
 
-If you encounter a timeout error, verify the stream's assignment to the StorageProxy:
+If you encounter a timeout error, verify the stream's assignment to the _Virtual_ Storage Node:
 
 ```shell
 streamr storage-node list-streams 0x17f98084757a75add72bf6c5b5a6f69008c28a57
