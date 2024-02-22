@@ -82,7 +82,7 @@ streamr stream resend last \
   10 /test-01
 ```
 
-### Removing a Stream from the Storage Proxy
+### Removing a Stream from the _Virtual_ Storage Node
 
 ```shell
 streamr storage-node remove-stream \
