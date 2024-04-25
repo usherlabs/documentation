@@ -142,7 +142,9 @@ paths:
           name: count
           schema:
             type: integer
-          description: The number of records to fetch (only for 'last' query type).
+          description: |
+            The number of records to fetch (only for 'last' query type).
+            Note: If a negative number is provided, it will fetch the first messages.
         - in: query
           name: fromTimestamp
           schema:
