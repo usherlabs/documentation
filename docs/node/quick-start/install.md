@@ -48,10 +48,9 @@ This builds a Docker image named **`usherlabs/logsn-node`**, using the Dockerfil
 
 ```sh
 docker run \
-		-v <path-to-your-config>:/home/node/.logstore/config/default.json \
-		-p 7774:7774 \
-		-t usherlabs/logsn-node:latest \
-		logstore-broker start
+  -v <path-to-your-config>:/home/node/.logstore/config/default.json \
+  -p 7774:7774 \
+  usherlabs/logsn-node:latest
 ```
 
 This mounts your configuration file into the Docker container and initiates the Log Store Node.
