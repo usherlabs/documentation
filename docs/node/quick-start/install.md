@@ -39,7 +39,7 @@ This builds a Docker image named **`usherlabs/logsn-node`**, using the Dockerfil
 
 ## Configuring Your Node
 
-1. **Configuration File**: Create a JSON configuration file for your node. Example configurations are available in [the **`config-examples`** directory](https://github.com/usherlabs/logstore-node/tree/develop/config-examples). Customize your configuration as needed. For a detailed guide on configuration parameters, refer to the [Configuration Reference](./config) section.
+1. **Configuration File**: Create a JSON configuration file for your node. Example configurations are available in [the **`config-examples`** directory](https://github.com/usherlabs/logstore-node/tree/dev/config-examples). Customize your configuration as needed. For a detailed guide on configuration parameters, refer to the [Configuration Reference](./config) section.
 2. **Setup Configuration**: Store your configuration file in a location accessible to Docker. This file will be used when initiating your Node.
 
 ## Starting Your Node
