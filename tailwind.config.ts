@@ -19,9 +19,9 @@ const colors = {
 	 *  - src/styles/colors.scss
 	 *  - specific components styles at their own files
 	 */
-	...generateColorShades('primary', '#855b7c'),
-	...generateColorShades('secondary', '#D9CBA3'),
-	...generateColorShades('emphasis', '#D1A455'),
+	...generateColorShades('primary', '#006d77'),
+	...generateColorShades('secondary', '#100322'),
+	...generateColorShades('emphasis', '#731DD8'),
 
 	...generateColorShades('warning', '#FFAA00'),
 	...generateColorShades('info', '#3A7CA5'),

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Note: type annotations allow type checking and IDEs autocompletion
 import { Config } from '@docusaurus/types';
 import autoprefixer from 'autoprefixer';
@@ -6,6 +7,7 @@ import { themes } from 'prism-react-renderer';
 import tailwindCss from 'tailwindcss';
 
 import algolia from './config/algolia';
+import gtagPlugin from './config/gtag';
 import seoMetadata from './config/seo';
 
 if (algolia) {
@@ -49,7 +51,7 @@ const config: Config = {
 		async function cssPlugin() {
 			return {
 				name: 'docusaurus-tailwindcss',
-				configurePostCss(postcssOptions) {
+				configurePostCss(postcssOptions: any) {
 					// Appends TailwindCSS and AutoPrefixer.
 					postcssOptions.plugins.push(tailwindCss);
 					postcssOptions.plugins.push(autoprefixer);
@@ -57,7 +59,7 @@ const config: Config = {
 				},
 			};
 		},
-
+		gtagPlugin,
 		// [
 		// 	'@docusaurus/plugin-client-redirects',
 		// 	{
@@ -81,7 +83,7 @@ const config: Config = {
 		// 		],
 		// 	},
 		// ],
-	],
+	].filter((p) => typeof p !== 'undefined'),
 
 	presets: [
 		[
@@ -232,7 +234,7 @@ const config: Config = {
 			},
 			prism: {
 				theme: themes.github,
-				darkTheme: themes.duotoneDark,
+				darkTheme: themes.dracula,
 			},
 			seo: {
 				twitterUsername: '@usher_web3',

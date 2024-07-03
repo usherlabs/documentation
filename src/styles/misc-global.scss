@@ -69,11 +69,36 @@ html {
 	box-sizing: border-box;
 }
 
-a {
+.markdown a {
+	display: inline-block;
 	text-decoration: none;
 
 	&:hover {
-		text-decoration: none;
+		text-decoration: underline;
+	}
+}
+
+html[data-theme='light'] .markdown a {
+	color: theme('colors.emphasis');
+
+	&:hover {
+		color: theme('colors.emphasis');
+	}
+
+	& * {
+		color: theme('colors.emphasis') !important;
+	}
+}
+
+html[data-theme='dark'] .markdown a {
+	color: theme('colors.emphasis-light');
+
+	&:hover {
+		color: theme('colors.emphasis-light');
+	}
+
+	& * {
+		color: theme('colors.emphasis-light') !important;
 	}
 }
 
@@ -120,4 +145,17 @@ iframe {
 
 .git-link path {
 	fill: currentColor;
+}
+
+.DocSearch.DocSearch-Button {
+	border-radius: 100px !important;
+
+	.DocSearch-Button-Keys,
+	.DocSearch-Button-Key {
+		background-color: inherit;
+	}
+}
+
+html[data-theme='dark'] .DocSearch.DocSearch-Button {
+	background-color: rgba(255, 255, 255, 1);
 }
