@@ -1,12 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import algoliasearch from 'algoliasearch';
+import 'dotenv/config';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
 // Algolia client setup
-const client = algoliasearch('YOUR_APP_ID', 'YOUR_ADMIN_API_KEY');
-const index = client.initIndex('YOUR_INDEX_NAME');
+if (
+	!(
+		process.env.ALGOLIA_APP_ID &&
+		process.env.ALGOLIA_API_KEY &&
+		process.env.ALGOLIA_INDEX_NAME
+	)
+) {
+	throw new Error('Please set Algolia Env Variables');
+}
+
+// Algolia client setup
+const client = algoliasearch(
+	process.env.ALGOLIA_APP_ID,
+	process.env.ALGOLIA_API_KEY,
+);
+const index = client.initIndex(process.env.ALGOLIA_INDEX_NAME);
 
 // Function to read and parse markdown files
 function readMarkdownFile(filePath: string) {
@@ -30,7 +45,7 @@ function readDocusaurusConfig() {
 
 // Function to read sidebar configuration
 function readSidebarConfig() {
-	const sidebarPath = path.join(__dirname, '..', 'sidebars.ts');
+	const sidebarPath = path.join(__dirname, '..', 'config/sidebars.ts');
 
 	return new Promise<any>((resolve, reject) => {
 		import(sidebarPath)
