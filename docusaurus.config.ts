@@ -5,38 +5,11 @@ import 'dotenv/config';
 import { themes } from 'prism-react-renderer';
 import tailwindCss from 'tailwindcss';
 
-let algolia = undefined;
-if (
-	process.env.ALGOLIA_APP_ID &&
-	process.env.ALGOLIA_API_KEY &&
-	process.env.ALGOLIA_INDEX_NAME
-) {
-	console.log('Using Algolia');
-	algolia = {
-		appId: process.env.ALGOLIA_APP_ID,
-		apiKey: process.env.ALGOLIA_API_KEY,
-		indexName: process.env.ALGOLIA_INDEX_NAME,
-		// Optional: see doc section below
-		contextualSearch: true,
+import algolia from './config/algolia';
+import seoMetadata from './config/seo';
 
-		// Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-		// externalUrlRegex: 'external\\.com|domain\\.com',
-
-		// Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-		// replaceSearchResultPathname: {
-		// 	from: '/docs/', // or as RegExp: /\/docs\//
-		// 	to: '/',
-		// },
-
-		// Optional: Algolia search parameters
-		// searchParameters: {},
-
-		// Optional: path for search page that enabled by default (`false` to disable it)
-		// searchPagePath: 'search',
-
-		// Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
-		// insights: false,
-	};
+if (algolia) {
+	console.log('Using Algolia!');
 }
 
 /** @type {import('@docusaurus/types').Config} */
@@ -50,6 +23,7 @@ const config: Config = {
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: '/',
+	trailingSlash: false, // Add this to ensure consistent URL format
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
@@ -117,7 +91,7 @@ const config: Config = {
 					// id: 'logstore',
 					path: 'docs',
 					routeBasePath: '/',
-					sidebarPath: require.resolve('./sidebars.ts'),
+					sidebarPath: require.resolve('./config/sidebars.ts'),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
 					editUrl:
@@ -132,6 +106,10 @@ const config: Config = {
 						),
 						require.resolve('./src/styles/custom.scss'),
 					],
+				},
+				sitemap: {
+					changefreq: 'weekly',
+					priority: 0.5,
 				},
 			},
 		],
@@ -157,6 +135,7 @@ const config: Config = {
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		{
+			metadata: seoMetadata,
 			navbar: {
 				hideOnScroll: true,
 				logo: {
@@ -192,12 +171,12 @@ const config: Config = {
 							{
 								type: 'docSidebar',
 								sidebarId: 'network',
-								label: 'Network',
+								label: 'Log Store Network',
 							},
 							{
 								type: 'docSidebar',
 								sidebarId: 'node',
-								label: 'Node',
+								label: 'Log Store Node',
 							},
 						],
 					},
@@ -255,8 +234,11 @@ const config: Config = {
 				theme: themes.github,
 				darkTheme: themes.duotoneDark,
 			},
+			seo: {
+				twitterUsername: '@usher_web3',
+			},
 			zoom: {
-				selector: '.markdown > img',
+				selector: '.markdown .zoom img',
 				background: {
 					light: 'rgb(255, 255, 255)',
 					dark: 'rgb(50, 50, 50)',
