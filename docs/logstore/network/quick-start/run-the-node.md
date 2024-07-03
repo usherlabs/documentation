@@ -1,7 +1,7 @@
 ---
 title: 'Run the Node'
 sidebar_position: 2
-slug: '/node'
+slug: '/logstore/node'
 ---
 
 # Log Store Node Overview
@@ -32,4 +32,3 @@ For a step-by-step guide on setup and usage, please refer to our [Node Quick Sta
 The Log Store Node functions as a Streamr Broker Node Plugin. This integration means that all functionalities enabling a Streamr Broker Node to connect with Streamr data streams are compatible. This includes configurations for additional features like **HTTP**, **WebSocket** or **MQTT** interfaces for efficient data publishing.
 
 To learn more about these interfaces, please refer to the [Streamr Documentation](https://docs.streamr.network/usage/connect-apps-and-iot/streamr-node-interface).
-

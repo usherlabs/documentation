@@ -34,6 +34,7 @@
 		"autoprefixer": "^10.4.19",
 		"chroma-js": "2.4.2",
 		"clsx": "^2.1.1",
+		"docusaurus-plugin-image-zoom": "^2.0.0",
 		"docusaurus-plugin-sass": "^0.2.5",
 		"docusaurus-theme-redoc": "^2.1.1",
 		"modern-normalize": "^2.0.0",

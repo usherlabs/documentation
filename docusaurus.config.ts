@@ -9,7 +9,7 @@ const config: Config = {
 	title: 'Usher Labs Docs',
 	tagline:
 		'Secure Web3 with trusted data: Usher Labs is an R&D firm enhancing user trust in data and digital asset management.',
-	favicon: 'img/favicon.ico',
+	favicon: 'img/usherlabs/favicon.ico',
 
 	url: 'https://docs.usher.so',
 	// Set the /<baseUrl>/ pathname under which your site is served
@@ -34,20 +34,7 @@ const config: Config = {
 	plugins: [
 		'docusaurus-plugin-sass',
 		'@docusaurus/plugin-sitemap',
-		// [
-		// 	'@docusaurus/plugin-content-docs',
-		// 	{
-		// 		id: 'verity',
-		// 		path: 'docs/verity',
-		// 		routeBasePath: '/verity',
-		// 		sidebarPath: require.resolve('./sidebars.js'),
-		// 		// Please change this to your repo.
-		// 		// Remove this to remove the "edit this page" links.
-		// 		editUrl:
-		// 			// INITIAL TODO change this to your repo. This is where a user will be redirected to if they follow the link on "edit this page"
-		// 			'https://github.com/usherlabs/docs/tree/master/',
-		// 	},
-		// ],
+		'docusaurus-plugin-image-zoom',
 		// This plugin enables tailwind
 		// async function myPlugin(context, options) {
 		async function cssPlugin() {
@@ -93,8 +80,8 @@ const config: Config = {
 			{
 				docs: {
 					// id: 'logstore',
-					path: 'docs/logstore',
-					routeBasePath: '/logstore',
+					path: 'docs',
+					routeBasePath: '/',
 					sidebarPath: require.resolve('./sidebars.ts'),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
@@ -142,21 +129,30 @@ const config: Config = {
 					src: '/img/usherlabs/Logo-Text-500.png',
 					srcDark: '/img/usherlabs/Logo-Text-White-500.png',
 					target: '_self',
-					width: '130',
+					width: '120',
 					href: '/',
 				},
 				items: [
-					// {
-					// 	type: 'docSidebar',
-					// 	sidebarId: 'papers',
-					// 	label: 'Papers',
-					// 	position: 'right',
-					// },
+					{
+						label: '🏠 Home',
+						position: 'left',
+						href: '/',
+					},
+					{
+						label: '📄 Papers',
+						position: 'left',
+						href: '/papers',
+					},
+					{
+						type: 'docSidebar',
+						sidebarId: 'verity',
+						label: '🧪 Verity',
+						position: 'left',
+					},
 					{
 						type: 'dropdown',
-						sidebarId: 'logstore',
-						label: 'Log Store',
-						position: 'right',
+						label: '🧶 Log Store',
+						position: 'left',
 						items: [
 							{
 								type: 'docSidebar',
@@ -170,12 +166,6 @@ const config: Config = {
 							},
 						],
 					},
-					// 	type: 'docSidebar',
-					// 	sidebarId: 'verity',
-					// 	label: 'Verity',
-					// 	position: 'right',
-					// },
-					// Right side starts here
 					{
 						type: 'search',
 						position: 'right',
@@ -229,6 +219,16 @@ const config: Config = {
 			prism: {
 				theme: themes.github,
 				darkTheme: themes.duotoneDark,
+			},
+			zoom: {
+				selector: '.markdown > img',
+				background: {
+					light: 'rgb(255, 255, 255)',
+					dark: 'rgb(50, 50, 50)',
+				},
+				// config: {
+				// 	// options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+				// },
 			},
 		},
 };

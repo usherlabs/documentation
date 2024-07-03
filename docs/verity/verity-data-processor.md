@@ -1,0 +1,46 @@
+---
+sidebar_position: 4
+title: Verifiable Data Processing
+---
+
+# Verity Data Processor (VDP)
+
+The VDP is an optional component specifically designed for Oracles and other Web3 Infrastructure conducting pipelines to existing prominent blockchains. If you're a blockchain operator and developer, this component may not be necessary for you as all data processing can occur within your Blockchain Nodes. As such, please refer to [Blockchain Extension](https://www.notion.so/Usher-Labs-Platform-Verity-Update-547846f3c0084558b00e47fda3cd1f94?pvs=21).
+
+Once data has been sourced and proofs attesting to the data sourcing are in place, the data can be transformed and processed for compatibility with a destination system, such as a prominent blockchain.
+
+Let’s refer to these data source proofs as sub-proofs. The VDP’s purpose is to transform data from its initial state into a new state that blockchains can accept and verify. For example, consider an Oracle that proves various data sources indicating the price of an asset. Within the VDP, these sources can be verified and a weighted aggregation performed, which can then be verified by the destination blockchain.
+
+![To explore the various architectures, please visit [Verity Architecture](https://miro.com/app/board/uXjVK4FD_7I=/?share_link_id=532402514253).](https://prod-files-secure.s3.us-west-2.amazonaws.com/1ba339e1-ec4d-4c25-b0be-b85f0cde7ac2/34979376-2bd8-461e-aead-cb0ece225319/VDP_Architecture.jpeg)
+
+To explore the various architectures, please visit [Verity Architecture](https://miro.com/app/board/uXjVK4FD_7I=/?share_link_id=532402514253).
+
+1. **Developer Requirements**:
+
+   Developers adopting the VDP need a programmatic stateless function capable of verifying the sub-proofs and processing the API response data.
+
+   **The Rust programming language is required**.
+
+   The VDP is essentially a framework, providing libraries to simplify the process of verifying these sub-proofs. Under the hood, a Verifier Layer is incorporated to share in MPC verification of the sub-proofs where necessary.
+
+2. **Framework Flexibility**:
+
+   The framework allows developers to choose between:
+
+   1. **ZK (Zero-Knowledge) Computation**: Privacy-preserving computation.
+   2. **IC (Decentralised) Computation**: High-speed public decentralised computation powered by the [Internet Computer](https://internetcomputer.org/).
+
+   Both environments leverage Rust, and the provided libraries are compatible between each environment.
+
+3. **Cryptographic Proofs**:
+
+   Each supported verifiable compute environment can produce a succinct cryptographic proof of the data processing outcome.
+
+   1. **ZK Computation**: Yields a ZK-SNARK based on the Groth16 primitive, directly compatible with blockchains such as Ethereum and other EVM chains.
+   2. **IC Computation**: Yields an ECDSA signature powered by TSS (Threshold Signature Scheme), where all parties reach consensus over outcomes to form a single signature.
+
+   This proof is highly compatible with various blockchains, making the Internet Computer a viable candidate for versatile pipelines.
+
+4. **Integration**:
+
+   Finally, program logic collects the compute outcome and its associated proof of data processing for submission to a destination blockchain of your choice.
