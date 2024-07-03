@@ -57,6 +57,7 @@
 		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
 		"@tsconfig/docusaurus": "^2.0.3",
 		"@types/algoliasearch": "^4.0.0",
+		"@types/jsdom": "^21.1.7",
 		"@types/node": "^20.14.9",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
@@ -73,9 +74,14 @@
 		"eslint-plugin-simple-import-sort": "^10.0.0",
 		"eslint-plugin-unused-imports": "^2.0.0",
 		"gray-matter": "^4.0.3",
+		"jsdom": "^24.1.0",
 		"prettier": "^3.3.2",
+		"remark-parse": "^11.0.0",
+		"remark-stringify": "^11.0.0",
 		"tsx": "^4.16.2",
-		"typescript": "^5.5.3"
+		"typescript": "^5.5.3",
+		"unified": "^11.0.5",
+		"unist-util-remove": "^4.0.0"
 	},
 	"browserslist": {
 		"production": [

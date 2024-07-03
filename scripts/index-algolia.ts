@@ -3,7 +3,12 @@ import algoliasearch from 'algoliasearch';
 import 'dotenv/config';
 import fs from 'fs';
 import matter from 'gray-matter';
+import { JSDOM } from 'jsdom';
 import path from 'path';
+import remarkParse from 'remark-parse';
+import remarkStringify from 'remark-stringify';
+import { unified } from 'unified';
+import { remove } from 'unist-util-remove';
 
 // Algolia client setup
 if (
@@ -23,40 +28,18 @@ const client = algoliasearch(
 );
 const index = client.initIndex(process.env.ALGOLIA_INDEX_NAME);
 
-// Function to read and parse markdown files
+async function readDocusaurusConfig() {
+	const configPath = path.join(process.cwd(), 'docusaurus.config.js');
+	const { default: config } = await import(configPath);
+	return config;
+}
+
 function readMarkdownFile(filePath: string) {
 	const fileContent = fs.readFileSync(filePath, 'utf8');
 	const { data, content } = matter(fileContent);
 	return { ...data, content };
 }
 
-// Updated function to read Docusaurus config
-function readDocusaurusConfig() {
-	const configPath = path.join(__dirname, '..', 'docusaurus.config.js');
-
-	return new Promise<any>((resolve, reject) => {
-		import(configPath)
-			.then((module) => {
-				resolve(module.default);
-			})
-			.catch(reject);
-	});
-}
-
-// Function to read sidebar configuration
-function readSidebarConfig() {
-	const sidebarPath = path.join(__dirname, '..', 'config/sidebars.ts');
-
-	return new Promise<any>((resolve, reject) => {
-		import(sidebarPath)
-			.then((module) => {
-				resolve(module.default);
-			})
-			.catch(reject);
-	});
-}
-
-// Function to walk through the Docusaurus content directory
 function walkContentDirectory(dir: string): string[] {
 	let results: string[] = [];
 	const list = fs.readdirSync(dir);
@@ -72,67 +55,73 @@ function walkContentDirectory(dir: string): string[] {
 	return results;
 }
 
-// Function to extract SEO metadata from Docusaurus config
-function extractSEOMetadata(config: any) {
-	const seoConfig = config.themeConfig?.seo || {};
-	const defaultTitle = config.title || '';
-	const defaultDescription = config.tagline || '';
-
-	return {
-		siteTitle: defaultTitle,
-		siteDescription: defaultDescription,
-		siteUrl: config.url || '',
-		siteBaseUrl: config.baseUrl || '/',
-		defaultImageUrl: seoConfig.image || '',
-		twitterUsername: seoConfig.twitterUsername || '',
-	};
+async function processMarkdown(content: string): Promise<string> {
+	const processor = unified().use(remarkParse).use(remarkStringify);
+	const tree = processor.parse(content);
+	remove(tree, { type: 'code' }); // Remove code blocks
+	const processedContent = await processor.run(tree);
+	return processor.stringify(processedContent as typeof tree);
 }
 
-// Function to find sidebar title for a given page
-function findSidebarTitle(sidebars: any, pagePath: string): string | null {
-	for (const [sidebarName, sidebarItems] of Object.entries(sidebars)) {
-		const flattenedItems = flattenSidebarItems(sidebarItems as any[]);
-		const matchingItem = flattenedItems.find((item) => item.id === pagePath);
-		if (matchingItem) {
-			return sidebarName;
+// async function processMarkdown(content: string): Promise<string> {
+//   const result = await remark()
+//     .use(strip, {keep: ['heading', 'paragraph']})
+//     .process(content);
+//   return result.toString();
+// }
+
+function extractHeadings(content: string): {
+	hierarchy: Record<string, string>;
+	content: string;
+} {
+	const dom = new JSDOM(content);
+	const headings = dom.window.document.querySelectorAll(
+		'h1, h2, h3, h4, h5, h6',
+	);
+	const hierarchy: Record<string, string> = {};
+	let lastLevel = 0;
+
+	headings.forEach((heading) => {
+		const level = parseInt(heading.tagName[1]);
+		const text = heading.textContent || '';
+
+		if (level <= lastLevel) {
+			for (let i = level; i <= 6; i++) {
+				delete hierarchy[`lvl${i}`];
+			}
 		}
-	}
-	return null;
-}
 
-// Helper function to flatten nested sidebar items
-function flattenSidebarItems(items: any[]): any[] {
-	return items.reduce((acc, item) => {
-		if (item.type === 'category') {
-			return [...acc, ...flattenSidebarItems(item.items)];
-		}
-		return [...acc, item];
-	}, []);
-}
-
-// Main indexing function
-async function indexDocusaurusPages() {
-	const contentDir = path.join(__dirname, '..', 'docs'); // Adjust this path
-	const files = walkContentDirectory(contentDir);
-	const docusaurusConfig = await readDocusaurusConfig();
-	const sidebarConfig = await readSidebarConfig();
-	const seoMetadata = extractSEOMetadata(docusaurusConfig);
-
-	const objects = files.map((file) => {
-		const fileData = readMarkdownFile(file);
-		const relativePath = path.relative(contentDir, file).replace(/\\/g, '/');
-		const pathWithoutExtension = relativePath.replace(/\.mdx?$/, '');
-		const sidebarTitle = findSidebarTitle(sidebarConfig, pathWithoutExtension);
-
-		return {
-			objectID: relativePath,
-			...fileData,
-			...seoMetadata,
-			url: path.join(seoMetadata.siteBaseUrl, pathWithoutExtension),
-			type: 'docs',
-			sidebarTitle,
-		};
+		hierarchy[`lvl${level}`] = text;
+		lastLevel = level;
 	});
+
+	return { hierarchy, content: dom.window.document.body.textContent || '' };
+}
+
+async function indexDocusaurusPages() {
+	const config = await readDocusaurusConfig();
+	const contentDir = path.join(process.cwd(), 'docs');
+	const files = walkContentDirectory(contentDir);
+
+	const objects = await Promise.all(
+		files.map(async (file) => {
+			const { content, ...frontMatter } = readMarkdownFile(file);
+			const processedContent = await processMarkdown(content);
+			const { hierarchy, content: extractedContent } =
+				extractHeadings(processedContent);
+			const relativePath = path.relative(contentDir, file);
+			const url = `${config.url}${config.baseUrl}${relativePath.replace(/\.mdx?$/, '')}`;
+
+			return {
+				objectID: relativePath,
+				url,
+				type: 'content',
+				hierarchy,
+				content: extractedContent,
+				...frontMatter,
+			};
+		}),
+	);
 
 	try {
 		const { objectIDs } = await index.saveObjects(objects);
