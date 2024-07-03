@@ -25,7 +25,6 @@ git clone https://github.com/usherlabs/logstore-node.git
 cd logstore-node
 ```
 
-
 ## Building the Docker Image
 
 1. **Build the Docker Image**: Use the Dockerfile in the repository to create your Log Store Node image:
@@ -35,7 +34,6 @@ docker build . -f ./Dockerfile -t usherlabs/logsn-node
 ```
 
 This builds a Docker image named **`usherlabs/logsn-node`**, using the Dockerfile located in the root of the repository.
-
 
 ## Configuring Your Node
 
@@ -54,7 +52,6 @@ docker run \
 ```
 
 This mounts your configuration file into the Docker container and initiates the Log Store Node.
-
 
 ## Verifying the Installation
 

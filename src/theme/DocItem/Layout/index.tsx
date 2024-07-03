@@ -51,7 +51,9 @@ export default function DocItemLayout({ children }: Props): JSX.Element {
 			{/*<div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>*/}
 			<div
 				className={clsx(
-					!isAPI ? clsx('col', !docTOC.hidden && styles.docItemCol) : styles.api
+					!isAPI
+						? clsx('col', !docTOC.hidden && styles.docItemCol)
+						: styles.api,
 				)}
 			>
 				{/* END CUSTOM CODE */}

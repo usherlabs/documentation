@@ -44,7 +44,7 @@ const DemoCard: React.FC<DemoCardProps> = ({
 					'hover:shadow': !ctaText,
 					'hover:opacity-90': !ctaText,
 				},
-				className
+				className,
 			)}
 			style={{
 				backgroundColor: 'var(--ifm-background-surface-color)',

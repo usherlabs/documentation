@@ -11,7 +11,7 @@ details, HTTP server setup, and plugins.
 ## Configuration Properties
 
 | Object.Property                              | Description                                                                                                 | Default Behavior |
-|----------------------------------------------|-------------------------------------------------------------------------------------------------------------|------------------|
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------- |
 | client                                       | Client authentication method. This wallet will be used for executing subscriptions and publishing messages. | Required         |
 | client.auth.privateKey                       | Private key for authentication, in string format.                                                           |                  |
 | client.auth.ethereum                         | Ethereum object for Web3 provider-based authentication.                                                     |                  |
@@ -30,17 +30,16 @@ Standalone and Network modes.
 ### Standalone Mode Configuration
 
 | Object.Property             | Description                                                                        |
-|-----------------------------|------------------------------------------------------------------------------------|
+| --------------------------- | ---------------------------------------------------------------------------------- |
 | mode.type                   | Set to 'standalone' for Standalone Mode.                                           |
 | mode.trackedStreams         | Array of objects defining streams to track and the number of partitions they have. |
 | mode.topicsStream           | Stream ID for validation results from predefined processes.                        |
 | mode.validationErrorsStream | Stream ID for schema validation errors.                                            |
 
-
 ### Network Mode Configuration
 
 | Object.Property        | Description                                                                |
-|------------------------|----------------------------------------------------------------------------|
+| ---------------------- | -------------------------------------------------------------------------- |
 | mode.type              | Set to 'network' for integration into the decentralized Log Store Network. |
 | mode.pool.id           | ID of the Kyve Pool for polling new bundles.                               |
 | mode.pool.url          | URL of the Kyve Pool for polling.                                          |
@@ -49,7 +48,7 @@ Standalone and Network modes.
 ## Configuration Properties for LogStore Plugin
 
 | Object.Property                                 | Description                                                                             | Default Behavior                     |
-|-------------------------------------------------|-----------------------------------------------------------------------------------------|--------------------------------------|
+| ----------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------ |
 | plugins.logStore.cassandra.hosts                | Array of hostnames for the Apache Cassandra cluster.                                    |                                      |
 | plugins.logStore.cassandra.username             | Username for Apache Cassandra authentication.                                           |                                      |
 | plugins.logStore.cassandra.password             | Password for Apache Cassandra authentication.                                           |                                      |
