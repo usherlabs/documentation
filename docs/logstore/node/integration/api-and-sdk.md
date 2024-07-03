@@ -9,7 +9,7 @@ The Log Store Node integrates with the Log Store API and SDK to provide develope
 
 **API Integration**
 
-- **Direct Querying**: Use the Node's API endpoint to query your Standalone Node directly. Use [our same HTTP API guide](../../network/api/getting-started.md) and replace it with your node API URL.
+- **Direct Querying**: Use the Node's API endpoint to query your Standalone Node directly. Use [our same HTTP API guide](../api/getting-started.md) and replace it with your node API URL.
 
 **SDK Integration**
 

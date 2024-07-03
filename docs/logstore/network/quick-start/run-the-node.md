@@ -25,7 +25,7 @@ Standalone Mode is designed as a comprehensive, easy-to-manage solution for veri
 - **Data Analysis**: Hydrate your Node with data from the network, and then analyse your local data store.
 - **Data Verifiability**: Remain confident that all data collected over streams, or hydrated from the Log Store Network is verified.
 
-For a step-by-step guide on setup and usage, please refer to our [Node Quick Start Guide](/node/quick-start/install.md).
+For a step-by-step guide on setup and usage, please refer to our [Node Quick Start Guide](../../node/quick-start/install.md).
 
 ## Streamr Integration
 
