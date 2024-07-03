@@ -232,6 +232,11 @@ html[data-theme='dark'] {
 	}
 
 	.footer_sidebar {
-		padding-top: 40px
+		padding-top: 40px;
+
+		.menu__link {
+			font-size: 0.9rem;
+			line-height: 2em;
+		}
 	}
 }

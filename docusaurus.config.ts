@@ -1,13 +1,11 @@
 // Note: type annotations allow type checking and IDEs autocompletion
-
-const path = require('path');
-const {
-	github: lightCodeTheme,
-	dracula: darkCodeTheme,
-} = require('prism-react-renderer');
+import { Config } from '@docusaurus/types';
+import autoprefixer from 'autoprefixer';
+import { themes } from 'prism-react-renderer';
+import tailwindCss from 'tailwindcss';
 
 /** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
 	title: 'Usher Labs Docs',
 	tagline:
 		'Secure Web3 with trusted data: Usher Labs is an R&D firm enhancing user trust in data and digital asset management.',
@@ -35,23 +33,7 @@ const config = {
 	},
 	plugins: [
 		'docusaurus-plugin-sass',
-		'@docusaurus/plugin-content-pages',
-		'@docusaurus/plugin-debug',
 		'@docusaurus/plugin-sitemap',
-		[
-			'@docusaurus/plugin-content-docs',
-			{
-				id: 'logstore',
-				path: 'docs/logstore',
-				routeBasePath: '/logstore',
-				sidebarPath: require.resolve('./sidebars.js'),
-				// Please change this to your repo.
-				// Remove this to remove the "edit this page" links.
-				editUrl:
-					// INITIAL TODO change this to your repo. This is where a user will be redirected to if they follow the link on "edit this page"
-					'https://github.com/usherlabs/docs/tree/master/',
-			},
-		],
 		// [
 		// 	'@docusaurus/plugin-content-docs',
 		// 	{
@@ -73,8 +55,8 @@ const config = {
 				name: 'docusaurus-tailwindcss',
 				configurePostCss(postcssOptions) {
 					// Appends TailwindCSS and AutoPrefixer.
-					postcssOptions.plugins.push(require('tailwindcss'));
-					postcssOptions.plugins.push(require('autoprefixer'));
+					postcssOptions.plugins.push(tailwindCss);
+					postcssOptions.plugins.push(autoprefixer);
 					return postcssOptions;
 				},
 			};
@@ -104,30 +86,33 @@ const config = {
 		// 	},
 		// ],
 	],
-	// algolia: { // INITIAL TODO to activate algolia search. Fill according to your needs
-	//     appId: '',
-	//     apiKey: '',
-	//     indexName: '',
-	//     contextualSearch: true,
-	// },
-
-	themes: [
-		[
-			path.resolve(__dirname, './node_modules/@docusaurus/theme-classic'),
-			{
-				customCss: [
-					require.resolve(
-						'./node_modules/modern-normalize/modern-normalize.css',
-					),
-					require.resolve('./src/styles/custom.scss'),
-				],
-			},
-		],
-		// 'docusaurus-theme-redoc',
-		// path.resolve(__dirname, './node_modules/@docusaurus/theme-search-algolia'), // INITIAL TODO if needed to activate algolia
-	],
 
 	presets: [
+		[
+			'@docusaurus/preset-classic',
+			{
+				docs: {
+					// id: 'logstore',
+					path: 'docs/logstore',
+					routeBasePath: '/logstore',
+					sidebarPath: require.resolve('./sidebars.ts'),
+					// Please change this to your repo.
+					// Remove this to remove the "edit this page" links.
+					editUrl:
+						// INITIAL TODO change this to your repo. This is where a user will be redirected to if they follow the link on "edit this page"
+						'https://github.com/usherlabs/docs/tree/master/',
+				},
+				blog: false,
+				theme: {
+					customCss: [
+						require.resolve(
+							'./node_modules/modern-normalize/modern-normalize.css',
+						),
+						require.resolve('./src/styles/custom.scss'),
+					],
+				},
+			},
+		],
 		[
 			'redocusaurus',
 			{
@@ -141,7 +126,7 @@ const config = {
 				// Theme Options for modifying how redoc renders them
 				theme: {
 					// Change with your site colors
-					primaryColor: '#1890ff',
+					primaryColor: '#100322',
 				},
 			},
 		],
@@ -149,26 +134,27 @@ const config = {
 
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-		({
+		{
 			navbar: {
 				hideOnScroll: true,
 				logo: {
 					alt: 'Usher Labs Logo',
-					src: '/img/usherlabs/Logo-Text.png',
+					src: '/img/usherlabs/Logo-Text-500.png',
 					srcDark: '/img/usherlabs/Logo-Text-White-500.png',
 					target: '_self',
 					width: '130',
 					href: '/',
 				},
 				items: [
-					{
-						type: 'docSidebar',
-						sidebarId: 'papers',
-						label: 'Papers',
-						position: 'right',
-					},
+					// {
+					// 	type: 'docSidebar',
+					// 	sidebarId: 'papers',
+					// 	label: 'Papers',
+					// 	position: 'right',
+					// },
 					{
 						type: 'dropdown',
+						sidebarId: 'logstore',
 						label: 'Log Store',
 						position: 'right',
 						items: [
@@ -182,19 +168,13 @@ const config = {
 								sidebarId: 'node',
 								label: 'Node',
 							},
-							{
-								type: 'docSidebar',
-								sidebarId: 'papers',
-								label: 'Papers',
-							},
 						],
 					},
-					{
-						type: 'docSidebar',
-						sidebarId: 'verity',
-						label: 'Verity',
-						position: 'right',
-					},
+					// 	type: 'docSidebar',
+					// 	sidebarId: 'verity',
+					// 	label: 'Verity',
+					// 	position: 'right',
+					// },
 					// Right side starts here
 					{
 						type: 'search',
@@ -247,10 +227,10 @@ const config = {
 				],
 			},
 			prism: {
-				theme: lightCodeTheme,
-				darkTheme: darkCodeTheme,
+				theme: themes.github,
+				darkTheme: themes.duotoneDark,
 			},
-		}),
+		},
 };
 
-module.exports = config;
+export default config;
