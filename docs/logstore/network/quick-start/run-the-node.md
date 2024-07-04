@@ -1,6 +1,6 @@
 ---
 title: 'Run the Node'
-sidebar_position: 2
+sidebar_position: 4
 slug: '/logstore/node'
 ---
 
@@ -17,7 +17,7 @@ Operational Modes of the Log Store Node:
 
 ## Understanding Standalone Mode
 
-Standalone Mode is designed as a comprehensive, easy-to-manage solution for verifiable data streams:
+Standalone Mode is designed to capture and index verifiable data streams:
 
 - **Independence**: Operate the node autonomously, with no need for LSAN token staking, and therefore no need for network data management.
 - **Configurable Streams**: Customize and choose specific data streams for monitoring and querying to meet unique requirements.

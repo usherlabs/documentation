@@ -5,6 +5,10 @@ title: LSAN Token
 
 # LSAN Token
 
+:::note
+**LSAN** is currently used primarily for access management. You can mitigate the use of **LSAN** tokens by engaging the network directly through the [Streamr SDK](../quick-start/using-streamr-sdk.md).
+:::
+
 The LSAN token, an ERC20 token exclusively developed for use with the Log Store AlphaNet, plays a pivotal role in ensuring secure and efficient data transactions on the network. Its primary function is facilitating seamless integration with live Streamr data streams and Arweave storage while providing permissioned access to Node Operators, and helping us cultivate data that improves decisions for our final production tokenomics. This token is indeed the heart of the Log Store AlphaNet, powering users' ability to store and retrieve data on the network.
 
 ## Acquiring LSAN Tokens

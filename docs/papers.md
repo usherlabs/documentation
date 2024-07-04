@@ -3,6 +3,8 @@ title: 'Papers'
 sidebar_position: 1
 ---
 
+# Papers
+
 Explore Usher Labs' Research & Development Papers, a comprehensive collection detailing our platform architecture, cutting-edge technologies, strategic roadmaps, and the visionary future of verifiable transparency in blockchain applications.
 
 | Date     | Paper                                                                                                                                                   |
@@ -14,4 +16,8 @@ Explore Usher Labs' Research & Development Papers, a comprehensive collection de
 | Dec 2023 | [Company Overview Brief](https://docsend.com/view/hykmkj23h38pine7)                                                                                     |
 | Nov 2023 | [Log Store Lightpaper](./logstore/network/specifics/lightpaper.mdx)                                                                                     |
 | Oct 2023 | [Data Protocols Lightpaper](https://go.usher.so/lightpaper)                                                                                             |
-| Oct 2023 | [Technical Specification](https://go.usher.so/tech-spec)                                                                                                |
+| Oct 2023 | [Immutable Data Streams: Technical Specification](https://go.usher.so/tech-spec)                                                                        |
+
+# Discovery Notes
+
+- **Jan 2024:** Recent discoveries suggest that while immutability is a cornerstone for censorship resistance, it may not be necessary for all data protocols, as long as tamper resistance is maintained.

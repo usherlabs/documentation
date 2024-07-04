@@ -5,7 +5,7 @@ title: 'Lightpaper'
 
 import LoomVideo from '@site/src/components/global/LoomVideo';
 
-_Last updated: 16th November 2023_
+_Last updated: 4th July 2024_
 
 ## Introduction
 
@@ -35,11 +35,23 @@ To deliver on its promise of permissioned, peer-to-peer, tamper-proof data trans
 
 ---
 
-### Vision and Future Developments
+## Protocol
 
-In the future, the Log Store Network will evolve to include verifiable compute capabilities over real-time data. This progression will allow centralized data publishers to stream data to the Log Store Network, where it can be validated for availability, integrity, validity, and authenticity by compute programs. The validation results will be streamed directly back to any stakeholder, particularly the data publisher.
+At its core, the Log Store Network's primary innovation lies in its Query and Data Access Protocol. Unlike traditional consensus-driven blockchains and decentralised systems, nodes on the network may not necessarily share the same database. This allows new nodes to participate and only expose their data to the network without having to download data exposed by other participants. Here, by virtue of demand, only high-value data is naturally replicated at the point of query. This inconsistent data distribution mechanism unifies the interface to a vast variety of data sources, whether APIs, centralised data silos, or generally any other data source capable of forming a sequence of chronologically ordered messages.
 
-As we continue to develop the Log Store Network, our vision is to establish a versatile platform that not only addresses current data management challenges but also paves the way for innovative applications of blockchain technology. We aim to extend the functionality of the Log Store Network, ensuring it remains at the forefront of decentralized data protocol solutions.
+Consider a video streaming network. An entire video can be inconsistently distributed among all its viewers. A new viewer watching the video can experience hyper-low latency by sampling data from all prior viewers. _This is what we mean by IPFS for real-time data._
+
+This value is enabled through the traceable nature of the real-time data collected by the Log Store. Log Store Nodes supporting the storage of messages in transit do not need to have the exact same data replicated. To form the data stream returned to users querying the network, the protocol involves a gossip process to aggregate all relevant data. It is at the point of observation that nodes coordinate through a unique gossip protocol, where they eventually propagate the active state of the network relevant to the given query.
+
+For example, Node A may have different data from Nodes C and B. If a query is made to Node B, Node B will aggregate the total data across all nodes to serve the query.
+
+Furthermore, this enables queries to the Log Store Network to essentially have no size limit. If you query for data since the dawn of time for a particular data stream, the Log Store’s internal gossip protocol will deliver a response in the form of a data stream. No data is duplicated either, and the data reflects all the information stored by all nodes in the Log Store Network.
+
+<LoomVideo
+	src={`https://www.loom.com/embed/a6f101c56d2b4d069526bbb550c968c2`}
+	hideOwner
+	hideTitle
+/>
 
 ## Verifiability
 
@@ -53,7 +65,23 @@ This double-layered approach to verification — cryptographic signature verific
 
 This commitment to verifiability is a cornerstone of our platform, ensuring that users can trust the data they access and utilize, which is crucial in a landscape where data integrity is paramount.
 
-[Learn about Client Side Network Verification →](../../network/sdk/network-verification.md)
+### Network System Messages
+
+System messages are events broadcasted through a system stream, designed to ensure consistency and verify communication in the Log Store Network. Here are some of the important system messages to query verifiability:
+
+#### `QueryRequest`
+
+A broker sends a `QueryRequest` to request data from the network. It’s an initial step that prompts nodes to provide the requested data.
+
+#### `QueryResponse`
+
+In response to a `QueryRequest`, nodes dispatch a `QueryResponse` containing the required data. These responses are central to continuously validating the network's data integrity, confirming that the retrieved information matches the stored data for all nodes.
+
+#### `QueryPropagate`
+
+`QueryPropagate` messages address any data gaps left by the primary node’s `QueryResponse`, with secondary nodes providing the missing information. This mechanism maintains the ledger's completeness and accuracy, ensuring a reliable record across the network.
+
+The functionality of these system messages underpins the structural and operational integrity of the Log Store Network, supporting its role as a trusted entity in the decentralized landscape.
 
 ### A Guide on the Query Process and Network Verification
 
@@ -68,7 +96,7 @@ This commitment to verifiability is a cornerstone of our platform, ensuring that
 ## Immutability
 
 :::info
-Data immutability powered by Arweave is currently disabled, and will be re-incorporated as an optional feature in Q1 of 2024.
+Data immutability powered by Arweave is currently disabled, and can be re-incorporated on an ad-hoc basis for select customers.
 :::
 
 The original design of the Log Store Network included a key feature: moving data to permanent storage, seamlessly integrated with the [KYVE Network](https://www.kyve.network/) and the [Arweave Blockchain](https://www.arweave.org/). This approach was grounded in the belief that permanent storage was essential for the security and integrity of data protocols.

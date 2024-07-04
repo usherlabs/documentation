@@ -1,6 +1,6 @@
 ---
-sidebar_position: 6
-title: Using Streamr
+sidebar_position: 2
+title: Using Streamr SDK
 ---
 
 The Log Store Network now seamlessly integrates with the Streamr Network, offering a streamlined approach to data storage without the need for additional library integrations for applications publishing data via Streamr. This compatibility enhances the Log Store's utility by making it directly accessible as a Storage Provider within the Streamr ecosystem.

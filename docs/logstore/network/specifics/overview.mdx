@@ -5,22 +5,46 @@ title: 'Overview'
 
 # Overview
 
-The Log Store Network decentralizes custom data management.
+The Log Store Network is decentralised data storage, access, and delivery for real-time streaming data. Capture, verify, and trace activity across a network, or various devices, applications, and/or software systems.
 
-Disparate and independent systems can depend on Log Store to manage custom data in an entirely trustless and "zero-party" manner.
-From the point data is published to the network, it is stored, available for query and is verifiably tamper-proof.
-This secures Smart Contracts, on-chain systems, and other applications from compromise by any centralized intermediary.
+_Think of it as [IPFS](https://ipfs.tech/) with persistent identifiers for real-time data streams._
 
-The implementation of this solution is a decentralized and permissionless time-series database.
+For an in-depth understanding of the network, research and technology, please refer to our **[Papers](../../../papers.md)**.
 
-Publish atomic event data from any software environment and query data with timestamps.
+## Resources
 
-For an in-depth understanding of the network, research and technology, please refer to our **[Papers](../../../papers.md)**
+- **Video:** [Log Store Network Tutorial](https://www.loom.com/share/0f664821f38a4359ad969e0b380160f3?sid=2feaf0b6-1e92-4665-ae91-75b7d6341483)
+- **Video:** [Interacting with Log Store through Streamr SDKs & Interface](https://www.loom.com/share/c4996b81eb564d6bac11c46cc7700639?sid=6bd7b59c-9455-417b-bffd-35288b4003f3)
+- **Video:** [Log Store Query](https://www.loom.com/share/a6f101c56d2b4d069526bbb550c968c2?sid=6de99ae0-dad7-4382-8560-1095725f07a0)
+- **Video:** [Log Store’s Kwil Integration](https://www.loom.com/share/5aa6b36ff5a54f3ab1491ca84ead4f9f)
+- **Post:** [Log Store with Streamr 1.0: Interplanetary storage for real-time data](https://www.usher.so/blog/log-store-with-streamr-1-0-interplanetary-storage-for-real-time-data/)
+- **Code:** [Log Store Examples](https://github.com/usherlabs/logstore-examples)
 
-## Key Functions
+## Features
 
-- **Data Storage**: Log Store's time-series data storage platform is secure and efficient, permitting you to store events emitted from any device.
-- **Data Querying**: Fetch data from the Log Store with timestamps. All query responses include an additional `Consensus` header - which is a set of signatures representing the network's verification of the response.
+**Data Availability**: Built with deep integration and support for [the Streamr Network](https://streamr.network/), the Log Store is the best data availability layer for real-time data. This includes high-frequency data in DePINs, data produced by IoT devices and sensors, video and media streaming platforms, and more.
+
+**Traceability**: Every message captured by the Log Store can be traced to a particular publisher, often identified by a public wallet.
+
+**Ordered and Identifiable**: Messages are ordered by time relative to the identifier of the data stream. Identifiers are either inherited, as in the case of capturing Streamr data, or assigned by the operator exposing their local real-time data input through the decentralised message store.
+
+**Input Versatility**: The Log Store can evolve to support many types of inputs. The Streamr Network is the first. Upcoming inputs include socket connections that offer real-time data capture within a private distributed cloud and an input to enable the Log Store as a data availability layer for IoTeX’s W3bStream. Usher Labs’ deep involvement with partner projects ensures that any new input can be requested for integration.
+
+**Blockchain Integration**: Atomic events, messages, and metrics can be streamed in real-time to a decentralised database, serving as a cache so that Oracles, Blockchains, and other decentralised systems, which are fundamentally batch-based processes, can poll and query the database within a time range. The outcome is packet loss prevention, eventual data synchronicity, and trust-minimised integration of real-time data with any decentralised system.
+
+## Outcomes
+
+- **DePINs**: Log Store supports decentralising trust in DePINs’ data storage.
+
+- **Shared Observability**: The Log Store Network helps facilitate a single source of truth for atomic events such as telemetry, metrics, and more. By decentralising trust in observability metrics, the network fosters open analysis of Web3 infrastructure.
+
+- **Video & Media Delivery**: The Log Store Network can be utilised as a decentralised CDN for streaming data. Its ability to inconsistently distribute data caching and aggregate data at the point of query establishes it as a rapidly innovative platform for video and media data delivery.
+
+- **Web3 Apps**: Capture traceable events across end-user applications on Web, Mobile, and in-game to create secure, gasless, trust-minimised onchain outcomes.
+
+:::note
+The Log Store Network is finding its place. By highlighting the core protocol and the value of this technology, Usher Labs is prepared for partnerships that adopt the protocol for various implementations, even where the entire network is not fully adopted.
+:::
 
 ## AlphaNet: The first release of the Network
 
@@ -42,15 +66,3 @@ Our detailed documentation on SDK, CLI, and API is designed to guide you every s
   [Learn more →](../sdk/getting-started.md)
 - **CLI**: The Command-Line Interface (CLI) tool lets you mint and stake LSAN tokens from your terminal.<br/>
   [Learn more →](../cli/getting-started.md)
-- **HTTP API**: The HTTP API provides an network interface for interacting with Log Store. It’s ideal for integrating with on-chain applications through Oracle Networks, or Smart Contract platforms compatible with HTTP interfaces.<br/>
-  [Learn more →](../../node/api/getting-started.md)
-
-## About Usher Labs
-
-Usher Labs is decentralizing custom data-driven digital asset management. The goal is to secure the conversion of digital interactions and signals into on-chain outcomes. The Log Store Network is the solution, offering a permanent and secure data store for event data, indexed and query-able by time. Prior to this development, Usher Labs released Usher, its Web3-integrated referral marketing platform - which demonstrates the need for such infrastructure as it involves the redistribution of digital assets between parties engaged in performance-based partnerships.
-
-[Learn more about Usher →](https://usher.so/)
-
-## Stay Connected
-
-Join our vibrant community on **[Discord](https://go.usher.so/discord)** and **[Twitter](https://twitter.com/usher_web3)**. Stay updated, ask questions, share your experiences, and help us build a more robust, efficient, and secure decentralized event/atomic data storage and retrieval ecosystem.
