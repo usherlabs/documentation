@@ -5,15 +5,18 @@ title: Verifiable Data Processing
 
 # Verity Data Processor (VDP)
 
-The VDP is an optional component specifically designed for Oracles and other Web3 Infrastructure conducting pipelines to existing prominent blockchains. If you're a blockchain operator and developer, this component may not be necessary for you as all data processing can occur within your Blockchain Nodes. As such, please refer to [Blockchain Extension](https://www.notion.so/Usher-Labs-Platform-Verity-Update-547846f3c0084558b00e47fda3cd1f94?pvs=21).
+The VDP is an optional component specifically designed for Oracles and other Web3 Infrastructure conducting pipelines to existing prominent blockchains. If you're a blockchain operator and developer, this component may not be necessary for you as all data processing can occur within your Blockchain Nodes. As such, please refer to [Blockchain Extension](./alternate-implementations.md).
 
 Once data has been sourced and proofs attesting to the data sourcing are in place, the data can be transformed and processed for compatibility with a destination system, such as a prominent blockchain.
 
 Let’s refer to these data source proofs as sub-proofs. The VDP’s purpose is to transform data from its initial state into a new state that blockchains can accept and verify. For example, consider an Oracle that proves various data sources indicating the price of an asset. Within the VDP, these sources can be verified and a weighted aggregation performed, which can then be verified by the destination blockchain.
 
-![To explore the various architectures, please visit [Verity Architecture](https://miro.com/app/board/uXjVK4FD_7I=/?share_link_id=532402514253).](https://prod-files-secure.s3.us-west-2.amazonaws.com/1ba339e1-ec4d-4c25-b0be-b85f0cde7ac2/34979376-2bd8-461e-aead-cb0ece225319/VDP_Architecture.jpeg)
+<div className="zoom">
+	![To explore the various architectures, please visit [Verity
+	Architecture](https://miro.com/app/board/uXjVK4FD_7I=/?share_link_id=532402514253).](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F1ba339e1-ec4d-4c25-b0be-b85f0cde7ac2%2F34979376-2bd8-461e-aead-cb0ece225319%2FVDP_Architecture.jpeg?table=block&id=1a812db1-d93e-4048-b05c-4ffe620b3e8e&spaceId=1ba339e1-ec4d-4c25-b0be-b85f0cde7ac2&width=2000&userId=4e604ee3-38f1-4cd3-8e60-a6fa0b61476b&cache=v2)
+</div>
 
-To explore the various architectures, please visit [Verity Architecture](https://miro.com/app/board/uXjVK4FD_7I=/?share_link_id=532402514253).
+_To explore the various architectures, please visit [Verity Architecture](https://miro.com/app/board/uXjVK4FD_7I=/?share_link_id=532402514253)._
 
 1. **Developer Requirements**:
 
