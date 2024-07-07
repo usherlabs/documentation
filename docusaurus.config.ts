@@ -75,16 +75,18 @@ const config: Config = {
 						from: [
 							'/network/overview/lightpaper',
 							'/papers/logstore/lightpaper',
+							'/network/sdk/network-verification',
+							'/network/sdk/client-side-network-verification',
 						],
 						to: '/logstore/network/specifics/lightpaper',
 					},
 					{
-						from: ['/network/overview/use-cases', '/use-cases'],
-						to: '/papers/logstore/use-cases',
-					},
-					{
-						from: ['/network/sdk/client-side-network-verification'],
-						to: '/network/sdk/network-verification',
+						from: [
+							'/network/overview/use-cases',
+							'/use-cases',
+							'/papers/logstore/use-cases',
+						],
+						to: '/logstore/network/specifics/overview',
 					},
 				],
 			},
