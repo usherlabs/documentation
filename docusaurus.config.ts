@@ -155,9 +155,9 @@ const config: Config = {
 						href: '/',
 					},
 					{
-						label: '📄 Papers',
+						label: '📄 Research',
 						position: 'left',
-						href: '/papers',
+						href: '/research',
 					},
 					{
 						type: 'docSidebar',

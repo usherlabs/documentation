@@ -1,9 +1,9 @@
 ---
-title: 'Papers'
+title: 'Research'
 sidebar_position: 1
 ---
 
-# Papers
+# Research
 
 Explore Usher Labs' Research & Development Papers, a comprehensive collection detailing our platform architecture, cutting-edge technologies, strategic roadmaps, and the visionary future of verifiable transparency in blockchain applications.
 
