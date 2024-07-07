@@ -1,0 +1,9 @@
+{
+	"redirects": [
+		{
+			"source": "/(.*)",
+			"destination": "https://usherlabs.github.io/usher-referrals/$1",
+			"permanent": true
+		}
+	]
+}
