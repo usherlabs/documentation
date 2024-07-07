@@ -44,7 +44,6 @@ const config: Config = {
 	},
 	plugins: [
 		'docusaurus-plugin-sass',
-		'@docusaurus/plugin-sitemap',
 		'docusaurus-plugin-image-zoom',
 		// This plugin enables tailwind
 		async function cssPlugin() {

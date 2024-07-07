@@ -47,7 +47,7 @@ function DocItemMetadata(): JSX.Element {
 		? `${title} | ${sidebarTitle} | ${siteConfig.title}`
 		: `${title} | ${siteConfig.title}`;
 
-	console.log({ siteConfig, sidebarTitle, metadata });
+	// console.log({ siteConfig, sidebarTitle, metadata });
 
 	return (
 		<Head>
