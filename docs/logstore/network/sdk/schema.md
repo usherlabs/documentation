@@ -64,5 +64,5 @@ For specific AJV options used in our schema validations, refer to our [GitHub Re
 All validation errors encountered during the processing of incoming events are directed to a specialized stream: **`0xeb21022d952e5De09C30bfda9E6352FFA95F67bE/validation-errors`**.
 
 :::note
-If you are operating a standalone node, you should configure the destination stream for these validation errors. Otherwise, errors will just get logged. For more details on this configuration, please refer to the [**node configuration reference**](../../node/quick-start/config.md).
+If you are operating a standalone node, you should configure the destination stream for these validation errors. Otherwise, errors will just get logged. For more details on this configuration, please refer to the [**node configuration reference**](../../node/overview/config.md).
 :::

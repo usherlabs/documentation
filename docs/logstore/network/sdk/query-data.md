@@ -25,9 +25,6 @@ async function query(
 	streamDefinition: StreamDefinition,
 	input: QueryInput,
 	onMessage?: MessageListener,
-	options?: {
-		verifyNetworkResponses?: boolean;
-	},
 ): Promise<LogStoreMessageStream>;
 ```
 
@@ -36,7 +33,6 @@ Queries a stream for historical data.
 - `streamDefinition` is an object containing the stream ID and partition that should be queried.
 - `input` is an object that defines the query options. It can be of type `QueryInput` and can have different forms like `QueryLast`, `QueryRange`, `QueryFrom`.
 - `onMessage` is an optional callback function for each message retrieved from the stream.
-- `options` is an optional object that can contain a property `verifyNetworkResponses` which is a boolean. [Read more about network verification here](./network-verification.md).
 
 Returns a Promise that resolves to a `LogStoreMessageStream` object, providing an alternative way of iterating through the messages.
 

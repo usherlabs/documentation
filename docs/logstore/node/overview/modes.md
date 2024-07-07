@@ -31,8 +31,8 @@ Apache Cassandra is utilized for large-scale storage requirements where many dat
 
 Integrating CassandraDB with the Log Store Node involves a few essential steps:
 
-- **Configuration File**: Set up your LogStore Node to connect with a CassandraDB instance. This involves specifying the database details in the [Node's configuration file](../quick-start/config.md).
-- **Database Schema**: Refer to **`keyspace.example.cql`** in the LogStore Node repository. [This file](https://github.com/usherlabs/logstore-node/blob/develop/config-examples/keyspace.example.cql) outlines the required database schema for CassandraDB, ensuring proper data structure and organization.
+- **Configuration File**: Set up your LogStore Node to connect with a CassandraDB instance. This involves specifying the database details in the [Node's configuration file](./config.md).
+- **Database Schema**: Refer to **`keyspace.example.cql`** in the LogStore Node repository. [This file](https://github.com/usherlabs/logstore-node/blob/master/config-examples/keyspace.example.cql) outlines the required database schema for CassandraDB, ensuring proper data structure and organization.
 
 ### SQLite
 

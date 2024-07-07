@@ -47,7 +47,6 @@ const config: Config = {
 		'@docusaurus/plugin-sitemap',
 		'docusaurus-plugin-image-zoom',
 		// This plugin enables tailwind
-		// async function myPlugin(context, options) {
 		async function cssPlugin() {
 			return {
 				name: 'docusaurus-tailwindcss',
@@ -60,29 +59,36 @@ const config: Config = {
 			};
 		},
 		gtagPlugin,
-		// [
-		// 	'@docusaurus/plugin-client-redirects',
-		// 	{
-		// 		redirects: [
-		// 			{
-		// 				from: ['/network/overview/paper', '/network/overview/papers'],
-		// 				to: '/papers',
-		// 			},
-		// 			{
-		// 				from: ['/network/overview/lightpaper'],
-		// 				to: '/papers/logstore/lightpaper',
-		// 			},
-		// 			{
-		// 				from: ['/network/overview/use-cases', '/use-cases'],
-		// 				to: '/papers/logstore/use-cases',
-		// 			},
-		// 			{
-		// 				from: ['/network/sdk/client-side-network-verification'],
-		// 				to: '/network/sdk/network-verification',
-		// 			},
-		// 		],
-		// 	},
-		// ],
+		[
+			'@docusaurus/plugin-client-redirects',
+			{
+				redirects: [
+					{
+						from: [
+							'/network/overview/paper',
+							'/network/overview/papers',
+							'/papers',
+						],
+						to: '/research',
+					},
+					{
+						from: [
+							'/network/overview/lightpaper',
+							'/papers/logstore/lightpaper',
+						],
+						to: '/logstore/network/specifics/lightpaper',
+					},
+					{
+						from: ['/network/overview/use-cases', '/use-cases'],
+						to: '/papers/logstore/use-cases',
+					},
+					{
+						from: ['/network/sdk/client-side-network-verification'],
+						to: '/network/sdk/network-verification',
+					},
+				],
+			},
+		],
 	].filter((p) => typeof p !== 'undefined'),
 
 	presets: [
@@ -90,7 +96,7 @@ const config: Config = {
 			'@docusaurus/preset-classic',
 			{
 				docs: {
-					// id: 'logstore',
+					// id: 'default',
 					path: 'docs',
 					routeBasePath: '/',
 					sidebarPath: require.resolve('./config/sidebars.ts'),
