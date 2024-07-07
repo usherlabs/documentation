@@ -21,7 +21,8 @@ export default function TOCWrapper(props: Props): JSX.Element {
 					'text-xs text-black-2 dark:text-white-2 mt-4 text-center  font-mono'
 				}
 			>
-				made with <span className={'text-emphasis'}>♥</span> <br /> by usherlabs
+				made with <span className={'text-emphasis'}>♥</span> <br /> by
+				usherlabs
 			</div>
 		</div>
 	);

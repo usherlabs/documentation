@@ -1,4 +1,3 @@
-# Contracts
 # directories
 .yarn/
 **/.coverage_artifacts
@@ -20,13 +19,3 @@ coverage.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# contracts/hardhat dir
-packages/contracts/coverage
-packages/contracts/coverage.json
-packages/contracts/typechain
-packages/contracts/typechain-types
-packages/contracts/types
-packages/contracts/cache
-packages/contracts/artifacts/build-info
-packages/contracts/artifacts/contracts/**/*.dbg.json

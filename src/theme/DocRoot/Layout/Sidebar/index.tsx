@@ -41,7 +41,7 @@ export default function DocRootLayoutSidebar({
 			className={clsx(
 				ThemeClassNames.docs.docSidebarContainer,
 				styles.docSidebarContainer,
-				hiddenSidebarContainer && styles.docSidebarContainerHidden
+				hiddenSidebarContainer && styles.docSidebarContainerHidden,
 			)}
 			onTransitionEnd={(e) => {
 				// eslint-disable-next-line
@@ -58,7 +58,7 @@ export default function DocRootLayoutSidebar({
 				<div
 					className={clsx(
 						styles.sidebarViewport,
-						hiddenSidebar && styles.sidebarViewportHidden
+						hiddenSidebar && styles.sidebarViewportHidden,
 					)}
 				>
 					<DocSidebar

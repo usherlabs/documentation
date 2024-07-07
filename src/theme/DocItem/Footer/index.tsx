@@ -18,7 +18,7 @@ function TagsRow(props: TagsListInlineProps) {
 		<div
 			className={clsx(
 				ThemeClassNames.docs.docFooterTagsRow,
-				'row margin-bottom--sm'
+				'row margin-bottom--sm',
 			)}
 		>
 			<div className="col">
@@ -30,14 +30,13 @@ function TagsRow(props: TagsListInlineProps) {
 
 type EditMetaRowProps = Pick<
 	DocContextValue['metadata'],
-	'editUrl' | 'lastUpdatedAt' | 'lastUpdatedBy' | 'formattedLastUpdatedAt'
+	'editUrl' | 'lastUpdatedAt' | 'lastUpdatedBy'
 >;
 
 function EditMetaRow({
 	editUrl,
 	lastUpdatedAt,
 	lastUpdatedBy,
-	formattedLastUpdatedAt,
 }: EditMetaRowProps) {
 	return (
 		<div className={clsx(ThemeClassNames.docs.docFooterEditMetaRow, 'row')}>
@@ -47,7 +46,6 @@ function EditMetaRow({
 				{(lastUpdatedAt || lastUpdatedBy) && (
 					<LastUpdated
 						lastUpdatedAt={lastUpdatedAt}
-						formattedLastUpdatedAt={formattedLastUpdatedAt}
 						lastUpdatedBy={lastUpdatedBy}
 					/>
 				)}
@@ -58,16 +56,8 @@ function EditMetaRow({
 
 export default function DocItemFooter(): JSX.Element | null {
 	// CUSTOM CODE - detect if is api page
-	const { metadata, frontMatter } = useDoc();
-	const {
-		editUrl,
-		lastUpdatedAt,
-		formattedLastUpdatedAt,
-		lastUpdatedBy,
-		tags,
-	} = metadata;
-	const { api_page } = frontMatter;
-	const isAPI = api_page === true;
+	const { metadata } = useDoc();
+	const { editUrl, lastUpdatedAt, lastUpdatedBy, tags } = metadata;
 	// END CUSTOM CODE
 
 	const canDisplayTagsRow = tags.length > 0;
@@ -82,11 +72,7 @@ export default function DocItemFooter(): JSX.Element | null {
 	return (
 		// CUSTOM CODE - add margin if is api page
 		<footer
-			className={clsx(
-				isAPI && 'ml-6',
-				ThemeClassNames.docs.docFooter,
-				'docusaurus-mt-lg'
-			)}
+			className={clsx(ThemeClassNames.docs.docFooter, 'docusaurus-mt-lg')}
 		>
 			{canDisplayTagsRow && <TagsRow tags={tags} />}
 			{canDisplayEditMetaRow && (
@@ -94,7 +80,6 @@ export default function DocItemFooter(): JSX.Element | null {
 					editUrl={editUrl}
 					lastUpdatedAt={lastUpdatedAt}
 					lastUpdatedBy={lastUpdatedBy}
-					formattedLastUpdatedAt={formattedLastUpdatedAt}
 				/>
 			)}
 		</footer>

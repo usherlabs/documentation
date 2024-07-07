@@ -1,0 +1,118 @@
+---
+sidebar_position: 5
+title: 'Lightpaper'
+---
+
+import LoomVideo from '@site/src/components/global/LoomVideo';
+
+_Last updated: 4th July 2024_
+
+## Introduction
+
+The Log Store Network represents the foundational step towards enabling **application-specific data protocols**. These protocols are designed to seamlessly and trustlessly integrate off-chain and on-chain environments, thereby revolutionising how data is handled across various platforms.
+
+## Purpose
+
+At its core, the Log Store Network is about establishing a decentralized, tamper-proof time-series database. This network serves as a crucial building block in creating a platform where centralized services can decentralize trust in their processes. The ultimate goal is to enable these services to prove and verify the validity of their data on blockchain networks, impacting the management of digital assets within Smart Contracts.
+
+## Architecture and Operation
+
+The current iteration of the Log Store Network functions as a decentralized database, capable of securely storing time-series data. Data streams, such as real-world asset prices, Web3 infrastructure metrics, or IoT device outputs, can be consumed by centralised compute environments and then published on-chain for verification and processing. Chainlink Functions or Gelato Web3 Functions can also be used as compute processes to facilitate the consumption of data from the Log Store and processing of outcomes before publishing a finalised transaction on-chain.
+
+The Log Store Network empowers users to decide how to consume tamper-proof data and leverage it within their Smart Contracts. This flexibility is pivotal in creating more integrated and secure blockchain ecosystems, moving away from the current paradigm of centralized and siloed data management.
+
+Centralized APIs, a common feature in current data management systems, often become points of compromise, leading to security risks like oracle manipulation. The Log Store Network addresses this by decentralizing data management, starting from data capture to storage and querying. Its time-series composability ensures that consuming systems can efficiently track and ingest new data events over time.
+
+To deliver on its promise of permissioned, peer-to-peer, tamper-proof data transport, the Log Store Network leverages the capabilities of the [Streamr Network](https://streamr.network). This partnership underscores our commitment to building a robust, secure, and versatile data protocol platform.
+
+### A Guide on the Architecture
+
+<LoomVideo
+	src={`https://www.loom.com/embed/e225f85604f54a01946351a99f2ffdfd`}
+	hideOwner
+	hideTitle
+/>
+
+---
+
+## Protocol
+
+At its core, the Log Store Network's primary innovation lies in its Query and Data Access Protocol. Unlike traditional consensus-driven blockchains and decentralised systems, nodes on the network may not necessarily share the same database. This allows new nodes to participate and only expose their data to the network without having to download data exposed by other participants. Here, by virtue of demand, only high-value data is naturally replicated at the point of query. This inconsistent data distribution mechanism unifies the interface to a vast variety of data sources, whether APIs, centralised data silos, or generally any other data source capable of forming a sequence of chronologically ordered messages.
+
+Consider a video streaming network. An entire video can be inconsistently distributed among all its viewers. A new viewer watching the video can experience hyper-low latency by sampling data from all prior viewers. _This is what we mean by IPFS for real-time data._
+
+This value is enabled through the traceable nature of the real-time data collected by the Log Store. Log Store Nodes supporting the storage of messages in transit do not need to have the exact same data replicated. To form the data stream returned to users querying the network, the protocol involves a gossip process to aggregate all relevant data. It is at the point of observation that nodes coordinate through a unique gossip protocol, where they eventually propagate the active state of the network relevant to the given query.
+
+For example, Node A may have different data from Nodes C and B. If a query is made to Node B, Node B will aggregate the total data across all nodes to serve the query.
+
+Furthermore, this enables queries to the Log Store Network to essentially have no size limit. If you query for data since the dawn of time for a particular data stream, the Log Store’s internal gossip protocol will deliver a response in the form of a data stream. No data is duplicated either, and the data reflects all the information stored by all nodes in the Log Store Network.
+
+<LoomVideo
+	src={`https://www.loom.com/embed/a6f101c56d2b4d069526bbb550c968c2`}
+	hideOwner
+	hideTitle
+/>
+
+## Verifiability
+
+The Log Store Network places a high emphasis on the verifiability and integrity of data. In our system, data is inherently secure against tampering or manipulation. Each data item received in the Log Store is cryptographically signed, adhering to the protocols of the Streamr Network, which forms the foundational layer of our platform.
+
+One of the critical aspects of our network is the way data is queried. When a query is made, data is retrieved directly from the nodes within the Log Store Network at the point of the query. This ensures that the data served is current and directly reflects the information stored in our database.
+
+Furthermore, we have implemented a robust verification mechanism. Each piece of data can undergo cryptographic signature verification to confirm its authenticity, ensuring it originates from the intended publisher. This process not only verifies the source of the data but also guarantees that the data received during a query accurately represents the information stored within the network.
+
+This double-layered approach to verification — cryptographic signature verification combined with our unique query mechanism — provides an added layer of security. It ensures that the data served is not just from a legitimate source but also mirrors the actual data stored, maintaining the integrity and reliability of the information accessed through the Log Store Network.
+
+This commitment to verifiability is a cornerstone of our platform, ensuring that users can trust the data they access and utilize, which is crucial in a landscape where data integrity is paramount.
+
+### Network System Messages
+
+System messages are events broadcasted through a system stream, designed to ensure consistency and verify communication in the Log Store Network. Here are some of the important system messages to query verifiability:
+
+#### `QueryRequest`
+
+A broker sends a `QueryRequest` to request data from the network. It’s an initial step that prompts nodes to provide the requested data.
+
+#### `QueryResponse`
+
+In response to a `QueryRequest`, nodes dispatch a `QueryResponse` containing the required data. These responses are central to continuously validating the network's data integrity, confirming that the retrieved information matches the stored data for all nodes.
+
+#### `QueryPropagate`
+
+`QueryPropagate` messages address any data gaps left by the primary node’s `QueryResponse`, with secondary nodes providing the missing information. This mechanism maintains the ledger's completeness and accuracy, ensuring a reliable record across the network.
+
+The functionality of these system messages underpins the structural and operational integrity of the Log Store Network, supporting its role as a trusted entity in the decentralized landscape.
+
+### A Guide on the Query Process and Network Verification
+
+<LoomVideo
+	src={`https://www.loom.com/embed/a21d5fb105a64258b25c9106391997e9`}
+	hideOwner
+	hideTitle
+/>
+
+---
+
+## Immutability
+
+:::info
+Data immutability powered by Arweave is currently disabled, and can be re-incorporated on an ad-hoc basis for select customers.
+:::
+
+The original design of the Log Store Network included a key feature: moving data to permanent storage, seamlessly integrated with the [KYVE Network](https://www.kyve.network/) and the [Arweave Blockchain](https://www.arweave.org/). This approach was grounded in the belief that permanent storage was essential for the security and integrity of data protocols.
+
+However, our team’s comprehensive research revealed that security needs for data protocols can be diverse. While all data in the Log Store Network is inherently cryptographically tamper-proof, we recognized that the requirement for data immutability, which offers an added layer of censorship resistance, varies based on the specific application.
+
+In response to this insight, we have evolved our approach. The Log Store Network now treats data immutability as an optional feature, rather than a default requirement. Developers have the flexibility to opt into this feature if their specific use case demands this enhanced level of security.
+
+This shift not only aligns with the varied security needs of different applications but also makes the cost of using the Log Store Network more dynamic. The costs are now directly proportional to the chosen level of security in data management, ensuring that developers only pay for what they need, and can tailor the solution to their specific requirements.
+
+### Demonstrating Immutability
+
+<LoomVideo
+	src={`https://www.loom.com/embed/578870963c2d4ca4ac0873a0ccfb0658`}
+	hideOwner
+	hideTitle
+/>
+
+---

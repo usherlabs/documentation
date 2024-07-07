@@ -1,0 +1,13 @@
+{
+	"index_name": "usherlabs-docs",
+	"start_urls": ["https://docs.usher.so/docs"],
+	"selectors": {
+		"lvl0": ".main-wrapper h1",
+		"lvl1": ".main-wrapper h2",
+		"lvl2": ".main-wrapper h1",
+		"lvl3": ".main-wrapper h4",
+		"lvl4": ".main-wrapper h5",
+		"lvl5": ".main-wrapper h6",
+		"text": ".main-wrapper p, .main-wrapper ol, .main-wrapper ul"
+	}
+}

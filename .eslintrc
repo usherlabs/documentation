@@ -22,7 +22,6 @@
 		"@typescript-eslint",
 		"import",
 		"unused-imports",
-		"jest",
 		"simple-import-sort"
 	],
 	"extends": [
