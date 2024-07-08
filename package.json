@@ -30,6 +30,7 @@
 		"@docusaurus/theme-classic": "^3.4.0",
 		"@docusaurus/theme-common": "^3.4.0",
 		"@docusaurus/theme-search-algolia": "^3.4.0",
+		"@easyops-cn/docusaurus-search-local": "^0.44.2",
 		"@mdx-js/react": "^3.0.1",
 		"autoprefixer": "^10.4.19",
 		"change-case": "^5.4.4",

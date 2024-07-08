@@ -6,13 +6,8 @@ import 'dotenv/config';
 import { themes } from 'prism-react-renderer';
 import tailwindCss from 'tailwindcss';
 
-import algolia from './config/algolia';
 import gtagPlugin from './config/gtag';
 import seoMetadata from './config/seo';
-
-if (algolia) {
-	console.log('Using Algolia!');
-}
 
 /** @type {import('@docusaurus/types').Config} */
 const config: Config = {
@@ -88,6 +83,16 @@ const config: Config = {
 						to: '/logstore/network/specifics/overview',
 					},
 				],
+			},
+		],
+		[
+			'@easyops-cn/docusaurus-search-local',
+			{
+				hashed: true,
+				docsRouteBasePath: '/',
+				indexBlog: false,
+				searchContextByPaths: ['verity', 'logstore'],
+				useAllContextsWithNoSearchContext: true,
 			},
 		],
 	].filter((p) => typeof p !== 'undefined'),
@@ -256,7 +261,6 @@ const config: Config = {
 				// 	// options you can specify via https://github.com/francoischalifour/medium-zoom#usage
 				// },
 			},
-			algolia,
 		},
 };
 
