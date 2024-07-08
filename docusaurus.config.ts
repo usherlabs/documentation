@@ -82,6 +82,10 @@ const config: Config = {
 						],
 						to: '/logstore/network/specifics/overview',
 					},
+					{
+						from: ['/logstore', '/logstore/network'],
+						to: '/logstore/network/quick-start/guide',
+					},
 				],
 			},
 		],
