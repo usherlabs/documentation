@@ -1,7 +1,19 @@
 //overrides
+
+[data-theme='dark'] {
+	#__docusaurus .navbar-sidebar {
+		background-color: theme('colors.primary');
+
+		.menu__link {
+			color: #fff;
+		}
+	}
+}
 #__docusaurus {
 	.navbar-sidebar {
 		z-index: var(--z-sidebar);
+		opacity: 1;
+		background-color: #fff;
 
 		&__item {
 			padding: 1rem var(--ifm-navbar-padding-horizontal);
@@ -12,6 +24,12 @@
 				}
 				.icon-link {
 					display: none;
+				}
+
+				.menu__link {
+					font-size: 1rem;
+					line-height: 1.2rem;
+					color: theme('colors.slate.800');
 				}
 			}
 		}

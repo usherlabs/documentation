@@ -159,3 +159,9 @@ iframe {
 html[data-theme='dark'] .DocSearch.DocSearch-Button {
 	background-color: rgba(255, 255, 255, 1);
 }
+
+@media (max-width: 996px) {
+	code {
+		line-break: anywhere;
+	}
+}

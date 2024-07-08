@@ -44,11 +44,18 @@ html[data-theme='dark'] {
 		&__items {
 			min-width: auto;
 
-			&:not(.navbar__items--right) {
-				.navbar__link.navbar__item {
-					@media (max-width: 996px) {
-						display: none;
-					}
+			flex: 2;
+
+			&.navbar__items--right {
+				flex: 1;
+			}
+
+			@media (max-width: 996px) {
+				.navbar__item {
+					display: none !important;
+				}
+				[class*='navbarSearchContainer'] {
+					position: relative !important;
 				}
 			}
 
@@ -95,8 +102,13 @@ html[data-theme='dark'] {
 
 			.icon-link,
 			[class*='toggle_'] {
-				padding: 0.5rem;
+				min-width: 30px;
+				min-height: 30px;
+				padding: 5px;
 				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0;
 
 				transition: opacity 0.2s ease-out;
 
@@ -202,8 +214,8 @@ html[data-theme='dark'] {
 			height: 1.75rem;
 			background: var(--navbar-separator-bg-c);
 
-			margin-inline-start: 1rem;
-			margin-inline-end: 1rem;
+			margin-inline-start: 0.5rem;
+			margin-inline-end: 0.5rem;
 		}
 
 		.language {
