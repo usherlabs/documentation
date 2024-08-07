@@ -86,6 +86,10 @@ const config: Config = {
 						from: ['/logstore', '/logstore/network'],
 						to: '/logstore/network/quick-start/guide',
 					},
+					{
+						from: ['/verity'],
+						to: '/verity/introduction',
+					},
 				],
 			},
 		],
