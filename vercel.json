@@ -20,6 +20,17 @@
 			"source": "/research",
 			"destination": "https://www.usher.so/blog/",
 			"permanent": true
+		},
+		{
+			"source": "/(.*)",
+			"destination": "https://docs.verity.usher.so/$1",
+			"permanent": true,
+			"has": [
+				{
+					"type": "host",
+					"value": "docs.usher.so"
+				}
+			]
 		}
 	],
 	"cleanUrls": true
