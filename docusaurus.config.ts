@@ -11,12 +11,12 @@ import seoMetadata from './config/seo';
 
 /** @type {import('@docusaurus/types').Config} */
 const config: Config = {
-	title: 'Usher Labs Docs',
+	title: "Usher Labs's Log Store Docs",
 	tagline:
-		'Secure Web3 with trusted data: Usher Labs is an R&D firm enhancing user trust in data and digital asset management.',
+		"Usher Labs's Log Store: Decentralised data storage, access, and delivery for real-time streaming data.",
 	favicon: 'img/usherlabs/favicon.ico',
 
-	url: 'https://docs.usher.so',
+	url: 'https://docs.logstore.usher.so',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: '/',
@@ -99,7 +99,7 @@ const config: Config = {
 				hashed: true,
 				docsRouteBasePath: '/',
 				indexBlog: false,
-				searchContextByPaths: ['verity', 'logstore'],
+				// searchContextByPaths: ['verity', 'logstore'],
 				useAllContextsWithNoSearchContext: true,
 			},
 		],
@@ -148,7 +148,7 @@ const config: Config = {
 				// Theme Options for modifying how redoc renders them
 				theme: {
 					// Change with your site colors
-					primaryColor: '#100322',
+					primaryColor: '#472836',
 				},
 			},
 		],
@@ -161,9 +161,9 @@ const config: Config = {
 			navbar: {
 				hideOnScroll: true,
 				logo: {
-					alt: 'Usher Labs Logo',
-					src: '/img/usherlabs/Logo-Text-500.png',
-					srcDark: '/img/usherlabs/Logo-Text-White-500.png',
+					alt: "Usher Labs' Log Store Logo",
+					src: '/img/logstore/logo.png',
+					srcDark: '/img/logstore/logo-white.png',
 					target: '_self',
 					width: '120',
 					href: '/',
@@ -175,32 +175,16 @@ const config: Config = {
 						href: '/',
 					},
 					{
-						label: '📄 Research',
+						type: 'docSidebar',
+						sidebarId: 'network',
+						label: '📘 Log Store Network',
 						position: 'left',
-						href: '/research',
 					},
 					{
 						type: 'docSidebar',
-						sidebarId: 'verity',
-						label: '🧪 Verity',
+						sidebarId: 'node',
+						label: '📙 Log Store Node',
 						position: 'left',
-					},
-					{
-						type: 'dropdown',
-						label: '🧶 Log Store',
-						position: 'left',
-						items: [
-							{
-								type: 'docSidebar',
-								sidebarId: 'network',
-								label: 'Log Store Network',
-							},
-							{
-								type: 'docSidebar',
-								sidebarId: 'node',
-								label: 'Log Store Node',
-							},
-						],
 					},
 					{
 						type: 'search',
@@ -211,14 +195,14 @@ const config: Config = {
 						position: 'right',
 						items: [
 							{
-								href: 'https://logstore.usher.so',
+								href: 'https://www.usher.so',
 								label: 'Our Homepage',
 								target: '_blank',
 								rel: null,
 							},
 							{
 								label: 'Follow us',
-								href: 'https://twitter.com/usher_web3',
+								href: 'https://x.com/usher_web3',
 								target: '_blank',
 								rel: null,
 							},
@@ -230,7 +214,7 @@ const config: Config = {
 							},
 							{
 								label: 'Discover Usher Labs',
-								href: 'https://linktr.ee/usher.so',
+								href: 'https://bento.me/usher',
 								target: '_blank',
 								rel: null,
 							},

@@ -1,6 +1,17 @@
 # 📖 **Welcome to Usher Labs Documentation Repository**
 
-This is the home of the Usher Labs documentation repository!
+~~This is the home of the Usher Labs documentation repository!~~
+
+As of the 24th of Jan 2025:
+
+1. Usher Labs' Verity Documentation has moved to [https://docs.verity.usher.so](https://docs.verity.usher.so)
+2. Usher Labs' Research & Papers have been absorbed into the website: [https://www.usher.so/blog](https://www.usher.so/blog)
+
+This Documentation now only contains Usher Labs' experiments & projects such as:
+
+- **The Log Store Network**
+
+---
 
 This website is built using **[Docusaurus 3](https://docusaurus.io/)**, a static website generator.
 

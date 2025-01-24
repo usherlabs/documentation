@@ -10,6 +10,16 @@
 					"value": "docs.referrals.usher.so"
 				}
 			]
+		},
+		{
+			"source": "/verity/(.*)",
+			"destination": "https://docs.verity.usher.so/tech/$1",
+			"permanent": true
+		},
+		{
+			"source": "/research",
+			"destination": "https://www.usher.so/blog/",
+			"permanent": true
 		}
 	],
 	"cleanUrls": true
